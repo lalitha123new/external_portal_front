@@ -1,0 +1,87 @@
+
+
+<div class="row" style="margin:0px;padding:0px;">
+
+    <div class="col-md-12" style="margin:0px;padding:0px;">
+
+    <div class="w3-panel w3-round-small w3-teal" style="margin:0px;padding:0px;">
+    <div class="col-md-4">
+     </div>
+    <div class="col-md-4"> <h3 style="text-align:center">Messages</h3></div>
+    <div class="col-md-4">
+      <!-- <a routerLink="/dashboard/testlist" class="w3-button w3-green custom-button" style="float:right;"><i class="w3-medium fa fa-chevron-left">Back</i></a> -->
+    </div>
+   
+    </div>
+
+  </div>
+  </div>
+
+  
+  <div class="row">
+
+    <div class="col-md-12" style="text-align:center;">
+        <table class="table_1 table-hover" style="margin:auto;text-align:center; border-collapse: separate;
+        border-spacing: 0 1em; " width="80%" >
+          <thead>
+          <tr>
+             
+             
+              
+            </tr>
+          </thead>  
+          <tbody>
+           
+            <tr style="height:100px;border-radius:40px;margin-bottom:10px;" *ngFor="let each_message of new_message,let i = index" [ngClass] = "{'my-classb_color' : each_message.portal_flag == 1}" [ngStyle]="{'border-radius': '25px'}">
+                
+                <!-- <div style="padding-left:20px;padding-right:20px;border-radius:50%;">
+                <img style="border-radius:50%;"  [ngClass] = "{'my-class_float' : each_message.portal_flag == 1}" width="50px" height="50px"  /> -->
+                <td align="right" [ngClass] = "{'my-class_align' : each_message.portal_flag == 1}" [ngClass] = "{'my-class_align1' : each_message.portal_flag == 2}" style="max-width:400px;word-wrap:break-word;border:1px solid black;">{{each_message.notification_msg}}<br>
+                <p  align="right" [ngClass] = "{'my-class_align' : each_message.portal_flag == 1}" [ngClass] = "{'my-class_align1' : each_message.portal_flag == 2}" style="max-width:400px;word-wrap:break-word;font-style:italic;">{{each_message.created_at}}</p></td>
+              <!-- </div> -->
+
+               
+            
+            </tr>
+            <br>
+           
+          </tbody>
+           
+          </table>
+    </div>
+
+    
+  </div>
+
+
+  <div class="row">
+
+      
+      <div class="col-md-12">
+      <div class="col-md-2"></div>
+      <div class="col-md-4" >
+          <label for="file"><i class="fa fa-file-image-o" aria-hidden="true"></i><b>  File Upload</b></label>
+          <input type="file" id="file"  multiple (change)="onFileSelected($event)" class="w3-input w3-border" accept="image/*" style="height: 100%">
+          <button type="button" (click)="onUpload()" style="margin-top:10px;">Upload</button>
+       
+      </div>
+
+      <div class="col-md-4">
+        <textarea rows="4" cols="40" style="text-align:center;" [(ngModel)]="message"  placeholder="Type your message here" >
+        </textarea>
+      </div>
+
+      <div class="col-md-2" style="text-align: right;"></div>
+      
+    </div>
+   
+
+    <div class="col-md-12">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" style="text-align:center;">
+          <button type="submit" (click)="submitNotification()" class="btn btn-primary">Submit</button>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  

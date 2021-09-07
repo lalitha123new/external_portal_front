@@ -1,0 +1,360 @@
+<app-header1></app-header1>
+
+<div class="panel" style="background-color:#009688;">
+  <div class="panel-heading" ><h4 style="color:white;margin-top:5px;vertical-align: top;"><b>HISTOPATHOLOGY REQUEST FORM</b>
+    <a routerLink="/dashboard/testlist" class="w3-button w3-green custom-button" style="float:right;" id="a1"><i class="w3-medium fa fa-chevron-left">Back</i></a>
+  </h4></div>
+</div>
+
+
+  
+<div class="container">
+
+
+  <div class="panel-group"><div class="row">
+    <div class="col-md-12 col-sm-12">
+    <div class="panel panel-success" style="margin-bottom:5px;">
+      
+      <div class="panel-body col-md-6 col-sm-6"><b>Neuro Path No(Lab Use Only):</b>
+       </div>
+       <div class="panel-body col-md-6 col-sm-6" style="text-align:right;"> <b>Date</b> :  {{date}}
+       </div>
+      
+    </div> 
+
+  </div>
+</div>
+
+
+
+      <div class="panel panel-default col-md-12 col-sm-12" style="width: 100%; text-align: right;margin-bottom:5px;">
+         
+            <ngx-barcode [bc-value]=[sample[0]?.transaction_id] [bc-display-value]="true" [bc-height] = "40" [bc-width] = "2" [bc-font-size]="10"></ngx-barcode>
+           
+            <div style="width: 100%; margin-top:-60px ; text-align: left;">
+            <b>Hospital</b>: {{username}}<br>
+            <b>Contact</b>:  {{hospitaldetails?.phone}}<br>
+            <b>EmailId:</b>  {{hospitaldetails?.mail}}
+          </div>
+          
+        </div> 
+        
+
+      <div class="row"> 
+        <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">       
+          <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;'>
+           
+            <div class="panel-body" ><b>Name:</b> {{sample[0]?.pat_name}}</div>
+          </div>
+
+        <div></div>
+
+        <div class="panel panel-success col-md-4 col-sm-4 " style='padding:0px;'>
+        
+            <div class="panel-body"><b>Age/Gender:</b> {{sample[0]?.pat_age}}/{{sample[0]?.pat_gender}}</div>
+          </div>
+
+          <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+           
+            <div class="panel-body"><b>Referring Hosp.Patient Id:</b> {{sample[0]?.hosp_ref_no}}</div>
+          </div>
+  </div> 
+</div>
+
+
+<div class="row"> 
+  <div class="col-md-12 " style="margin-bottom:5px;">
+
+    
+
+  <!-- <div></div> -->
+  <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;'>
+    
+    <div class="panel-body"><b>Referred By:</b> {{sample[0]?.referred_by}}</div>
+  </div> 
+
+  <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+    
+    <div class="panel-body"><b>Consultant Mobile No:</b> {{sample[0]?.doctor_phone_no}}</div>
+  </div>
+
+  <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+   
+    <div class="panel-body"><b>Consultant E-mail:</b> {{sample[0]?.doctor_email_id}}</div>
+  </div>
+   
+
+  </div>
+</div>
+
+<div class="row"> 
+  <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">       
+    <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;'>
+     
+      <div class="panel-body" ><b>Patient Mobile No:</b> {{sample[0]?.pat_phno}}</div>
+    </div>
+
+  <div></div>
+
+  <div class="panel panel-success col-md-4 col-sm-4 " style='padding:0px;'>
+    
+      <div class="panel-body"><b>Patient E-mail:</b>{{sample[0]?.pat_email}} </div>
+    </div>
+
+    <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+    
+      <div class="panel-body"><b>Hosp.Address:</b> {{hosp_address}}</div>
+    </div>
+</div> 
+</div>
+
+
+<!-- begin new code with specimen,sample_type,fixative,sample_quantity -->
+<div class="row" style="margin-bottom:5px;">
+<div class="col-md-12 col-sm-12" >
+  
+  <table class="table-responsive" style="width:100%;">
+    <thead class="panel-heanding panel-success">
+        <tr  style="border:1px black;" class="panel panel-success">
+            <th width="" class="td_class   " style="padding-top:0px;padding-bottom:0px;">Specimen
+                </th>
+            <th width="" class="td_class  " style="padding-top:0px;padding-bottom:0px;">Test
+               </th>
+               <th width="" class="td_class " style="padding-top:0px;padding-bottom:0px;">Biopsy-Site
+              </th>
+            <th width="" class="td_class " style="padding-top:0px;padding-bottom:0px;">Fixative
+                </th>
+                <th width="" class="td_class  " style="padding-top:0px;padding-bottom:0px;">Ref.Number
+                </th>
+                <th width="" class=" col-md-3" style="padding-top:0px;padding-bottom:0px;">{{heading}}
+                </th>
+                
+                
+                  </tr>
+                </thead>
+                  <tbody>
+        <tr class="noBorder" *ngFor="let presc of sampleArray; let i = index">
+            <td width="15%;"  class="td_class">
+                <textarea  style="padding-top:0px;padding-bottom:15px;" [(ngModel)]="presc.specimen" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.specimen}}"></textarea>
+            </td>
+            <td width="35%" class="td_class">
+                <textarea style="padding-top:0px;padding-bottom:15px;" [(ngModel)]="presc.sample_type" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_type}}"></textarea>
+            </td>
+            <td width="20%" class="td_class">
+              <textarea style="padding-top:0px;padding-bottom:15px;" [(ngModel)]="presc.sample_site" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_site}}"></textarea>
+          </td>
+            <td width="15%" class="td_class">
+                <textarea style="padding-top:0px;padding-bottom:15px;" [(ngModel)]="presc.fixative" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.fixative}}"></textarea>
+            </td>
+            <td width="10%" class="td_class">
+              <textarea style="padding-top:0px;padding-bottom:15px;" [(ngModel)]="presc.ref_no" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.ref_no}}"></textarea>
+          </td>
+            <td width="5%">
+                    <textarea style="padding-top:0px;padding-bottom:15px;" [(ngModel)]="presc.sample_quantity" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity}}"></textarea>
+            </td>
+            
+            <!-- <td width="20%"> -->
+                <!-- <button class="w3-button w3-green custom-button"   title="Click to remove this row" type="button" (click)="deleteNewSample(i)" style="border-radius: 50%;margin-top:20px;"><i class="w3-medium  fa fa-minus"></i>   
+                
+                </button> -->
+            <!-- </td> -->
+        </tr>
+        <!--removed the code here for adding new sample data row-->
+    </tbody>
+</table>
+
+</div>
+</div>
+
+<!-- end new code with specimen,sample_type,fixative,sample_quantity -->
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+    <div class="panel panel-success" style="margin-bottom:5px;">
+      <!-- <div class="panel-heading"><b>Clinical History</b></div> -->
+      <div class="panel-body" style=" word-wrap: break-word;"><b>Clinical History:</b> {{sample[0]?.clinic_history}}</div>
+    </div> 
+
+  </div>
+</div>
+
+
+<div class="row">
+<div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+    <div class="panel panel-success">
+      <!-- <div class="panel-heading"><b>Examination</b></div> -->
+      <div class="panel-body" style=" word-wrap: break-word;"><b>Examination:</b> {{sample[0]?.examination}}</div>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+    <div class="panel panel-success" style="margin-bottom:5px;">
+      <!-- <div class="panel-heading"><b>Investigation</b></div> -->
+      <div class="panel-body" style=" word-wrap: break-word;"><b>Investigation:</b> {{sample[0]?.investigation}}</div>
+    </div> 
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+  <div class="panel panel-success" style="margin-bottom:5px;">
+    <!-- <div class="panel-heading"><b>Previous Biopsy Number if any</b></div> -->
+    <div class="panel-body" style=" word-wrap: break-word;"><b>Previous Biopsy Number If Any:</b> {{sample[0]?.previous_biopsy_number}}</div>
+  </div> 
+
+</div>
+</div>
+    
+<div class="row">
+  <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+    <div class="panel panel-success">
+        <!-- <div class="panel-heading"><b>Uploaded file</b></div>   -->
+      <div class="panel-body"><b>Uploaded Files:{{sample[0]?.sample_image_url}}</b> 
+        <!-- <a [href]="sample[0]?.sample_image_url" target="_blank"> 
+       <img [src]="sample[0]?.sample_image_url" height="50" width="50"/> </a>  -->
+          </div>
+        </div>
+
+      </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+      <div class="panel panel-success">
+          <!-- <div class="panel-heading"><b>Provisinal Diagonsis:</b></div>   -->
+        <div class="panel-body" style=" word-wrap: break-word;"><b>Clinical Diagnosis:</b> {{sample[0]?.diagnosis }}</div>
+          </div>
+
+        </div>
+ </div>
+      
+
+ <div class="row">
+   <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+      <div class="panel panel-success">
+            <!-- <div class="panel-heading"><b>Operative Notes / Diagonsis:</b></div>   -->
+            <div class="panel-body" style=" word-wrap: break-word;"><b>Operative Notes(For Neuro Surgery):</b> {{sample[0]?.opetative_notes}}</div>
+              </div>   
+            </div>
+          </div>
+                       
+         
+
+                   <div class="row">
+                    <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+                      <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+                       <!-- <div class="panel panel-success">
+                             <div class="panel-heading"><b>DD No:</b></div>  
+                             
+                               </div> -->
+                               <div class="panel panel-default fixed-bottom">
+                                <!-- <div class="panel-body" style="text-align:left; "><b>DD No/Online Transaction No:</b> {{sample[0]?.dd_no }}</div> -->
+                                <div class="panel-body" style="text-align:left; ">
+                                <label class="radio-inline">
+                                  <input type="radio" name="optradio"  [value]="true" [checked]="check_dd" disabled=true>DD 
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="optradio"  [value]="false" [checked]="check_online" disabled=true>Online Transaction
+                                </label>
+                              </div>
+                              </div>
+                                
+                                
+                              </div>
+
+                              <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+                                <!-- <div class="panel panel-success">
+                                      <div class="panel-heading"><b>Amount:</b></div>  
+                                      
+                                        </div> -->
+                                        <div class="panel panel-default fixed-bottom">
+                                         <div class="panel-body" style="text-align:left; "><b>DD No:</b> {{dd_no[0]?.dd_no}}</div>
+                                          </div>
+                                         
+                                         </div>
+
+
+                              <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+                                <!-- <div class="panel panel-success">
+                                      <div class="panel-heading"><b>Amount:</b></div>  
+                                      
+                                        </div> -->
+                                        <div class="panel panel-default fixed-bottom">
+                                         <div class="panel-body" style="text-align:left; "><b>Online Transaction No:</b> {{dd_no[0]?.trans_no}}</div>
+                                          </div>
+                                         
+                                         </div>
+                                       </div>
+                                      </div>
+
+<div class="row">
+<div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+
+<div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+<!-- <div class="panel panel-success">
+      <div class="panel-heading"><b>Amount:</b></div>  
+      
+        </div> -->
+        <div class="panel panel-default fixed-bottom">
+          <div class="panel-body" style="text-align:left; "><b>Bank Name:</b> {{dd_no[0]?.bank_name}}</div>
+          </div>
+          
+          </div>
+          <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+          <!-- <div class="panel panel-success">
+                <div class="panel-heading"><b>Amount:</b></div>  
+                
+                  </div> -->
+                  <div class="panel panel-default fixed-bottom">
+                    <div class="panel-body" style="text-align:left; "><b>Date:</b> {{dd_no[0]?.date_of_dd}}</div>
+                    </div>
+                    
+                    </div>
+                    <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+                    <!-- <div class="panel panel-success">
+                          <div class="panel-heading"><b>Amount:</b></div>  
+                          
+                            </div> -->
+                            <div class="panel panel-default fixed-bottom">
+                              <div class="panel-body" style="text-align:left; "><b>Amount:</b> {{sample[0]?.amount}}</div>
+                              </div>
+                              
+                              </div>                                  
+        
+      
+</div>
+</div>
+
+                                      <!-- <div class="row" >
+                                        <div class="col-md-12 col-sm-12" style="margin-top:40px;">
+                                            <div class="panel-body" style="text-align:right;"><b>Resident Doctor's Name(In Capital) And Contact Number With Signature</b></div>
+                                          </div>
+                                          </div> -->
+
+
+                                      <!-- <div class="row" style="margin-top:20px;">
+                                        <div class="col-md-12 col-sm-12">
+                                       <div class="panel panel-success" style="border:1px solid black;">
+                                       
+                                       <div class="panel-body" style="text-align:center;padding-top:10px;"><b>*Please provide all clinical details. Specimen without this request form will not be accepted.</b></div>
+                                       <div class="panel-body" style="text-align:center;padding-top:10px;"><b>Enquiry about reports between  10AM & 4PM only.</b></div>
+                                      </div>
+                             
+                                      </div>
+                           </div> -->
+
+                         
+                
+                  </div><!-- end of printDiv -->
+
+   <div style="text-align: center;">
+                  <button id="printbutton" style="margin-top:20px;" class="btn btn-success"  onClick="window.print();">Download PDF</button>
+       <!-- <button id="printbutton" style="margin-top:20px;" class="btn btn-success"  (click)="printDiv()">Download PDF</button> -->
+      </div>
+       <br>
+</div>
+
+

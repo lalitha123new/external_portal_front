@@ -1,0 +1,135 @@
+.align-center{
+	width: 40%;
+	margin: auto;
+}
+.login-card{
+
+	border-radius: 15px;
+}
+
+.my-class{
+	width: 100%!important;
+	min-width: unset!important;
+	
+}
+
+.mat-flat-button.mat-warn {
+	background-color: #F4BD2D;
+}
+.text1{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+color: #000000;
+}
+.text2{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+color: #000000;
+}
+.text3{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+text-transform: uppercase;
+color: #575757;
+padding:10px;
+margin-top:5px;
+}
+.text4{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 11px;
+line-height: 21px;
+color: #000000;
+padding:10px;
+}
+.text5{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+text-decoration-line: underline;
+color: #778ACE;
+}
+.text6{
+background-color: #FFFCF3;
+border: 1px solid #F4BD2D;
+border-radius: 4px;
+box-sizing: border-box;
+}
+.text7{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 21px;
+text-transform: capitalize;
+color: #203169;
+padding:20px;
+}
+.text8{
+	background-color:white;
+/* opacity: 0.3; */
+border-radius: 4px;
+}
+
+.text9{
+border-radius: 4px;
+}
+.text10{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+color: #A3A3A3;
+padding:10px;
+}
+.text11{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+text-decoration-line: underline;
+color: #203169;
+padding:10px;
+}
+.text12{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+text-align: right;
+text-decoration-line: underline;
+color: #778ACE;
+padding:13px;
+}
+hr{
+	height:7px;
+	background: linear-gradient(89.96deg, #FFFFFF 0.54%, rgba(244, 189, 45, 0.15) 14.52%, #F4BD2D 99.97%);
+}
+.text13{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+color: #000000;
+}

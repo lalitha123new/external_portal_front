@@ -1,0 +1,137 @@
+<app-header2></app-header2>
+<div class="w3-row" style="margin-top:-32px;">
+  <div class="col-md-12" style="padding:0px;">
+  
+<div class="w3-bar w3-light-grey" style="margin:auto;" id="mySidebar">
+   
+  
+   
+    <!-- Sidebar Links -->
+    <div class="col-md-5">
+    <a class="w3-bar-item w3-button" (click)="newSample()" style="margin-top:20px;"> <i class="w3-medium fa fa-plus"></i> New Sample</a>
+    <a class="w3-bar-item w3-button"  style="margin-top:20px;"> Sample List</a>
+    <a class="w3-bar-item w3-button" routerLink="/lablist"  style="margin-top:20px;"><i class="fa fa-home">Home</i> </a>
+    
+  </div>
+
+  <div class="col-md-5">
+
+      <h4>Welcome to NIMHANS,{{this.hospitaldetails?.hospitalname}}</h4>
+        Contact:{{this.hospitaldetails?.phone}}  <br>
+        EmailId:{{this.hospitaldetails?.mail}} 
+   
+</div>
+
+  
+  <div class="col-md-2">
+	<a class="w3-bar-item w3-button" (click)="logOut()" style="float:right;margin-top:20px;"><i class="w3-medium fa fa-sign-out"></i>  Logout</a>
+  
+
+    </div>
+  
+</div>
+</div>
+
+
+<div  style="margin-top:1px;margin-left:0;padding:0px;background-color:#f2f2f2;">
+	<div class="row" style="margin:0px;padding:0px;">
+		<div class="col-md-12" style="margin:0px;padding:0px;">
+	<div class="w3-panel w3-round-small" style="margin:0px;padding:0px;background-color:#df80ff;">
+		 <h3 style="padding-left:10px;">Sample List 
+			
+		 </h3>
+	</div>
+</div>
+</div>
+	
+	
+		<div class="row" style="margin-left:0px;margin-top:20px;background-color:#f2f2f2;">
+			<!-- <div class="col-md-12" style="margin-left:0px;">
+				
+			<span><i class="w3-medium fa fa-search"></i> Search By Name: <input  [(ngModel)] = "searchTerm"  class="" type="text"  /></span>
+	
+	
+				<div></div>
+				<span>
+			<div class=" dropdown col-md-4" style='margin-left: 340px; margin-top: -30px;'>
+				
+				<button class="btn btn-default" type="button" (click)="Reset()">Reset</button>
+				
+
+				</div>
+				
+			 <div class="dropdown col-md-4 " style='margin-left: 510px; margin-top: -35px;'>
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a  (click)="SortS('status')" >Status</a></li>
+						<li><a  (click)="SortS('pat_name')" >Name</a></li>
+						<li><a  (click)="SortS('referred_by')" >Referred_By</a></li>
+						<li><a  (click)="SortS('npno')" >NP No.</a></li>
+					</ul>		
+				</div> 
+				<div class="col-md-4">
+					
+				</div>
+				
+			</span>	
+		</div> -->
+
+
+		
+		<!-- <div class="row" style="margin-left:0px;padding:0px;">
+			<div class="w3-col m12" style="margin-left:0px;text-align:center;">
+				<div class="w3-panel w3-green"  style="margin-left:0px;">
+					<h3></h3>
+					<p> <span *ngIf="searchTerm"> with search "{{searchTerm}}"</span> </p>
+				</div>
+			</div>
+		</div>		 -->
+
+	
+	
+	<br>
+
+	<div id="div" class="col-md-12" style="margin-left:0px;padding-top:0px;text-align:center;overflow-x:auto;">
+		
+				<table class="table table-hover" style="background-color: #fff;border:1px solid black;width:100%;">
+				
+				<tr>
+
+				<th class="border_class success1 header_class th_class"><i class="w3-small custom-icon fa fa-ravelry"></i>Sr. No.</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-small custom-icon fa fa-hospital-o"></i>Referring Hosp.Patient Id</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-small custom-icon fa fa-user"></i>Name</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-small custom-icon fa fa-venus-mars"></i>Gender</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-small custom-icon fa fa-user-md"></i>Referred By</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-medium custom-icon fa fa-snowflake-o"></i>Lab No.</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-medium custom-icon fa fa-calendar-o"></i>Date Of Request</th>
+				<th class="border_class success1 header_class th_class"><i class="w3-medium custom-icon fa fa-hospital-o"></i>Status</th>
+				 <th class="border_class success1 header_class th_class"><i class="w3-medium custom-icon fa fa-pencil"></i>Edit</th> 
+				<th class="border_class success1 header_class th_class"><i class="w3-medium custom-icon fa fa-clone"></i>Print</th>
+				<!-- <th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-comment-o"></i> Message</th> -->
+			</tr>
+
+			<tr *ngFor="let autest of userList   let i = index">
+				<td class="td_class">{{i+1}}</td>
+				<td class="td_class">{{autest.au_hosp_ref_no}}</td>
+				<td class="pointer td_class" >{{autest.au_pat_name}}</td>
+				<td class="pointer td_class" >{{autest.au_pat_gender}}</td>
+				<td class="pointer td_class" >{{autest.au_referred_by}}</td>
+        <td class="pointer td_class">{{autest.au_np_no}}</td>
+        <!-- <td class="pointer"></td> -->
+				<td class="pointer td_class" >{{autest.date_of_sample}}</td>
+				<td class="pointer td_class" >{{autest.status}}</td> 
+				 <td class="td_class"><button class="w3-button w3-blue" [disabled]="!(autest.status == null)" [routerLink]="['/update',autest.au_patient_id]" ><span>Edit </span></button></td>
+				<td class="td_class"><button  [routerLink]="['/aupreview',autest.au_patient_id]" class="w3-button w3-blue">Print Request</button></td>
+				<!-- <td><button type="button"  title="send message" class="btn btn-primary">Send Message</button></td> -->
+			</tr>
+		</table>
+	</div>
+</div>
+</div>
+
+
+
+</div>
+
+
+

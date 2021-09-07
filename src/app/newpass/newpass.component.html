@@ -1,0 +1,55 @@
+<app-header7></app-header7>
+<div style="text-align:center;margin-top:50px;">
+
+
+  <div class="col-md-12">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+  <form novalidate [formGroup]="form" (ngSubmit)="toggleButton()">
+    <label class="w3-text-blue" for="email"><i class="fa fa-user-circle" aria-hidden="true"></i>
+      <b>Email Id</b>  
+      </label>
+      <input type="email" [(ngModel)]="email_old" formControlName="email" class="w3-input w3-border" disabled>
+      <br>
+        
+        
+        
+        <label class="w3-text-blue" for="pass"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Password</b>  
+        </label>
+        <input type="password" formControlName="pass"  class="w3-input w3-border">
+
+        <div *ngIf=" form.get('pass').touched && form.get('pass').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('pass').hasError('required')">
+            Password is required!!
+            </div>  
+            <div *ngIf=" form.get('pass').hasError('pattern')">
+                Invalid Password!Password should be minimum 6 characters long,should contain atleast a special character
+              </div>
+        </div>
+        <br>
+        <label class="w3-text-blue" for="confirm_pass"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Confirm Password</b>  
+        </label>
+        <input type="password" formControlName="confirm_pass"  class="w3-input w3-border">
+
+        <div *ngIf=" form.get('confirm_pass').touched && form.get('confirm_pass').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('confirm_pass').hasError('required')">
+            Confirm Password is required!!
+            </div>  
+            <div *ngIf=" form.get('confirm_pass').hasError('pattern')">
+                Invalid Confirm Password!!
+              </div>
+        </div>
+        <br>
+
+      <button type="submit" name="button" [disabled]="form.invalid || submitted_data_new" class="w3-btn w3-blue">Submit</button>
+          
+          
+  </form>
+</div>
+<div class="col-md-3"></div>
+  </div>
+
+</div>
+

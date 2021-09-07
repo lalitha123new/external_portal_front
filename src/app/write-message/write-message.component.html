@@ -1,0 +1,44 @@
+
+<app-header1></app-header1>
+<div class="row" style="margin:0px;padding:0px;">
+
+		<div class="col-md-12" style="margin:0px;padding:0px;">
+	
+		<div class="w3-panel w3-round-small w3-teal" style="margin:0px;padding:0px;">
+		<div class="col-md-4"></div>
+		<div class="col-md-4" style="text-align:center"> <h3>Write Meassage</h3></div>
+		<div class="col-md-4"><a routerLink="/dashboard/testlist" class="w3-button w3-green custom-button" style="float:right;"><i class="w3-medium fa fa-chevron-left"> Back</i></a>
+		</div>
+	   
+		</div>
+	
+	  </div>
+	  </div>
+	
+
+
+<div  class="col-md-12" style="text-align:center;margin-top:10px;">
+		
+		<table class="table table-hover" style="background-color:#fff;border:1px solid black;">
+		<thead>
+		<tr>
+
+        <th class="border_class success header_class"><i class="w3-small custom-icon fa fa-ravelry"></i> Sample_Id</th>
+        <th class="border_class success header_class"><i class="w3-small custom-icon fa fa-user"></i> Name</th>
+        <th class="border_class success header_class"><i class="w3-small custom-icon fa fa-user-md"></i> Referred By</th>
+		<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-venus-mars"></i> Gender</th>
+		<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-newspaper-o"></i>Mssage</th>
+		</tr>
+	</thead>
+
+	<tbody>
+			<tr *ngFor="let user of userList; let i = index">
+        		<td class="pointer" >{{user.sample_id}}</td>
+				<td class="pointer" >{{user.pat_name}} </td>
+				<td class="pointer" >{{user.pat_gender}} </td>
+				<td class="pointer" >{{test.referred_by}}</td>
+				<td><button type="button" (click)="sendTheMessage(user.sample_id)" title="send message" class="btn btn-primary">Send Message</button></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>

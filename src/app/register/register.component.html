@@ -1,0 +1,141 @@
+<app-header6></app-header6>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6" >
+      <form novalidate [formGroup]="form" (ngSubmit)="toggleButton()">
+       
+    
+       
+        <label class="w3-text-blue" for="hosp_name"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Hospital Name</b>
+        </label>
+        <input type="text" formControlName="hosp_name" class="w3-input w3-border">
+
+        <div *ngIf=" form.get('hosp_name').touched && form.get('hosp_name').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('hosp_name').hasError('required')">
+              Hospital Name is required!!
+            </div>  
+            <div *ngIf=" form.get('hosp_name').hasError('pattern')">
+                Invalid Hospital Name!!
+              </div>
+        </div>
+
+        <br>
+        <label class="w3-text-blue" for="hosp_type"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Hospital Type</b>  
+        </label>
+        
+        <select   formControlName="hosp_type" [ngModel]="hosp_type"
+        class="w3-input w3-border">
+                                         
+      <option [ngValue]="undefined" disabled  selected > Select </option>
+      <option *ngFor="let option of options let i = index">{{option}}</option>
+      </select>
+
+        <div *ngIf=" form.get('hosp_type').touched && form.get('hosp_type').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('hosp_type').hasError('required')">
+            Hospital Type is required!!
+            </div>  
+            <div *ngIf=" form.get('hosp_type').hasError('pattern')">
+                Invalid Hospital Type!!
+              </div>
+        </div>
+        <br>
+        <label class="w3-text-blue" for="address"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Hospital Address</b>  
+        </label>
+        <textarea type="text" formControlName="address"  class="w3-input w3-border"></textarea>
+
+        <div *ngIf=" form.get('address').touched && form.get('address').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('address').hasError('required')">
+            Hospital Address is required!!
+            </div>  
+            <div *ngIf=" form.get('address').hasError('pattern')">
+                Invalid Hospital Address!!
+              </div>
+        </div>
+        <label class="w3-text-blue" for="phone"><i class="fa fa-user-circle" aria-hidden="true"></i>
+          <b>Phone Number</b>  
+          </label>
+          <input type="text"  formControlName="phone"  class="w3-input w3-border">
+  
+          <div *ngIf=" form.get('phone').touched && form.get('phone').invalid" class="w3-panel w3-blue w3-round-xlarge">
+            <div *ngIf=" form.get('phone').hasError('required')">
+              Phone Number is required!!
+              </div>  
+              <div *ngIf=" form.get('phone').hasError('pattern')">
+                  Invalid Phone Number!!
+                </div>
+          </div>
+          <br>
+          <label class="w3-text-blue" for="email"><i class="fa fa-user-circle" aria-hidden="true"></i>
+            <b>Email Id</b>  
+            </label>
+            <input type="email"   formControlName="email" class="w3-input w3-border">
+    
+            <div *ngIf=" form.get('email').touched && form.get('email').invalid" class="w3-panel w3-blue w3-round-xlarge">
+              <div *ngIf=" form.get('email').hasError('required')">
+                Email Id is required!!
+                </div>  
+                <div *ngIf=" form.get('email').hasError('pattern')">
+                    Invalid Email Id!!
+                  </div>
+            </div>
+            <br>
+        <label class="w3-text-blue" for="user_name"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>User Id For Login</b>  
+        </label>
+        <input type="text" formControlName="user_name"  class="w3-input w3-border">
+
+        <div *ngIf=" form.get('user_name').touched && form.get('user_name').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('user_name').hasError('required')">
+            User Name is required!!
+            </div>  
+            <div *ngIf=" form.get('user_name').hasError('pattern')">
+                Invalid User Name!!
+              </div>
+        </div>
+        <br>
+        
+        
+        <label class="w3-text-blue" for="pass"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Password</b>  
+        </label>
+        <input type="password" formControlName="pass"  class="w3-input w3-border">
+
+        <div *ngIf=" form.get('pass').touched && form.get('pass').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('pass').hasError('required')">
+            Password is required!!
+            </div>  
+            <div *ngIf=" form.get('pass').hasError('pattern')">
+                Invalid Password!Password should be minimum 6 characters long,should contain atleast a special character
+              </div>
+        </div>
+        <br>
+        <label class="w3-text-blue" for="confirm_pass"><i class="fa fa-user-circle" aria-hidden="true"></i>
+        <b>Confirm Password</b>  
+        </label>
+        <input type="password" formControlName="confirm_pass"  class="w3-input w3-border">
+
+        <div *ngIf=" form.get('confirm_pass').touched && form.get('confirm_pass').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('confirm_pass').hasError('required')">
+            Confirm Password is required!!
+            </div>  
+            <div *ngIf=" form.get('confirm_pass').hasError('pattern')">
+                Invalid Confirm Password!!
+              </div>
+        </div>
+        <br>
+          <div style="text-align: center;">
+          <button type="submit" name="button" [disabled]="form.invalid || submitted_data" class="w3-btn w3-blue">Register</button>
+          </div>
+      </form> 
+    </div>
+
+    
+
+    <div class="col-md-3"></div>
+  </div>
+</div>

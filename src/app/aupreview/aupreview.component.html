@@ -1,0 +1,648 @@
+<app-header4></app-header4>
+
+<div class="panel" style="background-color: #df80ff;margin-bottom:0px;">
+  <div class="panel-heading" ><h4 style="color:white;margin-top:0px;margin-bottom:5px;vertical-align: top;"><b>AUTOIMMUNE LABORATORY REQUEST FORM</b><a routerLink="/aulab" class="w3-button w3-green custom-button" style="float:right;"><i class="w3-medium fa fa-chevron-left"> Back</i></a></h4></div>
+</div>
+
+
+  
+<div class="container">
+
+
+  <div class="panel-group">
+    <div class="row">
+    <div class="col-md-12 col-sm-12">
+    <div class="panel panel-success" style="margin-bottom:0px;padding-top:0px;padding-bottom:0px;">
+     
+      <div class="panel-body col-md-6 col-sm-6" style="text-align:left;padding-top:5px;padding-bottom:5px;"><b>Autoimmune No(Lab Use Only):</b></div>
+      <div class="panel-body col-md-6 col-sm-6" style="text-align:right;padding-top:5px;padding-bottom:5px;"><b>Date</b> :  {{date}}</div>
+    </div> 
+
+  </div>
+</div>
+
+
+
+      <div class="panel panel-default col-md-12 col-sm-12" style="width: 100%; text-align: right;margin-bottom:5px;">
+          
+           
+              <ngx-barcode [bc-value]=[au_sample[0]?.au_patient_id] [bc-display-value]="true" [bc-height] = "50" [bc-width] = "2" [bc-font-size]="10"></ngx-barcode>
+           
+            <div style="width: 100%; margin-top:-60px ; text-align: left;">
+            <b>Hospital</b>:{{hospitaldetails?.hospitalname}}<br>
+            <b>Contact</b>:  {{hospitaldetails?.phone}}<br>
+            <b>EmailId:</b>  {{hospitaldetails?.mail}}
+          </div>
+          </div>
+       
+        
+
+      <div class="row"> 
+        <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">       
+          <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;'>
+            
+            <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Name:</b>{{au_sample[0]?.au_pat_name}}</div>
+          </div>
+
+        <div></div>
+
+        <div class="panel panel-success col-md-4 col-sm-4 " style='padding:0px;'>
+         
+            <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Age/Gender:</b> {{au_sample[0]?.au_pat_age}}/{{au_sample[0]?.au_pat_gender}}</div>
+          </div>
+
+          <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+            
+            <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Referring Hosp.Patient Id:</b>{{au_sample[0]?.au_hosp_ref_no}}</div>
+          </div>
+  </div> 
+</div>
+
+ 
+    
+<div class="row"> 
+    <div class="col-md-12 " style="margin-bottom:5px;">
+
+     
+
+    <div></div>
+    <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;'>
+     
+      <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Referred By:</b> {{au_sample[0]?.au_referred_by}}</div>
+    </div> 
+
+    <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+      
+      <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Consultant Mobile No:</b>{{au_sample[0]?.au_doctor_phone_no}}</div>
+    </div>
+
+    <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+      
+      <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Consultant E-mail:</b>{{au_sample[0]?.au_doctor_email_id}}</div>
+    </div>
+     
+
+    </div>
+</div>
+
+<div class="row"> 
+  <div class="col-md-12 " style="margin-bottom:5px;">
+
+   
+
+  <div></div>
+  <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;'>
+   
+    <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Patient Mobile No:</b> {{au_sample[0]?.au_pat_phno}}</div>
+  </div> 
+
+  <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+    
+    <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Patient E-mail:</b>{{au_sample[0]?.au_pat_email}}</div>
+  </div>
+
+  <div class="panel panel-success col-md-4 col-sm-4" style='padding:0px;margin-top:0px;'>
+    
+    <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Hosp.Address:</b>{{hosp_address}}</div>
+  </div>
+   
+
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-12 col-sm-12">
+  <div class="panel panel-success" style="margin-bottom:5px;">
+        
+    <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Type of sample (tick appropriate)</b>
+    <div *ngFor="let i of importResults" style="padding-left:10px;">
+      <input type="checkbox"
+      [checked]="i.checked"
+      value="{{ i.value }}"
+      (click)="change(i)"/><label class="">{{ i.value }}</label>
+    </div>
+  </div>
+  </div> 
+
+</div>
+</div> -->
+
+
+<!-- end new code with specimen,sample_type,fixative,sample_quantity -->
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+    <div class="panel panel-success" style="margin-bottom:5px;">
+      
+      <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Clinical Details:</b>{{au_sample[0]?.au_clinic_history}} </div>
+    </div> 
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+  <div class="panel panel-success" style="margin-bottom:5px;">
+        
+    <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>TESTS REQUIRED (Tick relevant investigations)</b>
+    <!-- <div *ngFor="let i of Tests" style="padding-left:10px;">
+      <input type="checkbox"
+      [checked]="i.checked"
+      value="{{ i.value }}"
+      (click)="change1(i)"/><label class="">{{ i.value }}</label>
+    </div> -->
+
+    <section class="example-section">
+
+
+      <input type="checkbox"  class="example-margin" [(ngModel)]="test1" [ngModelOptions]="{standalone: true}" [checked]="test1" disabled=true /><b> 1) ANA profile (immunoblot): [nRNP/Sm, Sm, SS-A,Ro-52, SS-B, Scl-70, PM-Scl100,Jo-1, CENP B, PCNA, dsDNA, nucleosomes, histones, rib. P-prot.,AMA M2]</b>
+      <span [hidden]="!(check1)"> <input type="checkbox" class="example-margin" [(ngModel)]="test1_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" [checked]="test1_serum"  disabled=true /><b><span class="label_class1">Serum</span></b></span><br>
+
+
+      <input type="checkbox" class="example-margin" [(ngModel)]="test2" [ngModelOptions]="{standalone: true}" [checked]="test2"  disabled=true /><b> 2) ANCA (panca/canca) (immunofluorescence)</b>
+      <span [hidden]="!(check2)"><input type="checkbox" class="example-margin" [(ngModel)]="test2_serum" [ngModelOptions]="{standalone: true}"  style="margin-left:20px;"  disabled=true /><b><span class="label_class1">Serum</span></b></span><br>
+
+
+      <input type="checkbox" class="example-margin" [(ngModel)]="test3" [ngModelOptions]="{standalone: true}" [checked]="test3"  disabled=true /><b> 3) MOG NMOSD panel with NMO Aquaporin 4 Ab+ MOG antibodies (immunofluorescence)</b>
+      <span [hidden]="!(check3)"><input type="checkbox" class="example-margin" [(ngModel)]="test3_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  disabled=true /><b><span class="label_class1">Serum</span></b><input type="checkbox" class="example-margin" [(ngModel)]="test3_csf" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true   /><b><span class="label_class1">CSF</span></b></span><br>
+      
+      <div class="col-md-12  col-sm-12" [hidden]="!(test3)"> 
+        <br>
+        <div class="col-md-3 col-sm-3">
+
+          <label class="w3-text-black" for="au_dd_no"><b>NMOSD </b></label>
+          <br>
+          <br>
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group1" style="margin-left:0px;" [(ngModel)]="test3_col1_option1" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option1"  disabled=true><b><span class="label_class1">Optic neuritis</span></b>
+          </label><br>
+
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option2" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option2"  disabled=true><b><span class="label_class1">Acute myelitis</span></b> 
+          </label><br>
+
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option3" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option3"  disabled=true><b><span class="label_class1">Area postrema syndrome</span></b>
+          </label>
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option4" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option4"   disabled=true><b><span class="label_class1">Acute brainstem syndrome</span></b>
+          </label>
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option5" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option5"  disabled=true><b><span class="label_class1">Symptomatic narcolepsy or acute diencephalic clinical syndrome with NMOSD-typical diencephalic MRI lesions</span></b>
+          </label>
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option6" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option6"  disabled=true><b><span class="label_class1">Symptomatic cerebral syndrome with NMOSD-typical brain lesions</span></b>
+          </label>
+
+          <label class="radio-inline check_class" style="margin-left:0px;width:100%;">
+            <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option7" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option7"  disabled=true><b><span class="label_class1">If none of the above, specify</span></b>
+            <textarea  type="text" [(ngModel)]="test3_col1_option7_text" [ngModelOptions]="{standalone: true}"  class="w3-input w3-border" [hidden]="!(others1)"  disabled=true></textarea>
+          </label>
+          
+          </div>
+
+        
+       
+        <div class="col-md-3 col-sm-3">
+          <label class="w3-text-black" for="au_dd_no"><b>Current Clinical Status  </b></label>
+          <br>
+          <label class="radio-inline">
+            <input type="radio" name="group2" value="1" name="test3_col2_radio1" [(ngModel)]="test3_col2_radio1" [ngModelOptions]="{standalone: true}"  disabled=true><b>Symptomatic</b><br>
+            
+          </label> <br>
+
+          <label class="radio-inline">
+            <input type="radio" name="group2"  value="2" [(ngModel)]="test3_col2_radio1" [ngModelOptions]="{standalone: true}"   disabled=true><b>Remission</b>
+          </label><br>
+        
+        </div>
+        <div class="col-md-3 col-sm-3">
+         
+          <label class="w3-text-black" for="au_dd_no"><b>MOGAD </b></label><br>
+          
+          <label class="radio-inline check_class" >
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option1" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option1"  disabled=true><b><span class="label_class1">ADEM</span></b>
+          </label><br>
+
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option2" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option2"  disabled=true><b><span class="label_class1">Optic neuritis</span></b> 
+          </label><br>
+
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option3" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option3"  disabled=true><b><span class="label_class1">Transverse myelitis</span></b> 
+          </label>
+
+          
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option4" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option4"  disabled=true><b><span class="label_class1">Brain or brainstem demyelinating syndrome</span></b>
+          </label>
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option5" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option5"  disabled=true><b><span class="label_class1">CRION (chronic relapsing inflammatory optic neuropathy)</span></b>
+          </label>
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option6" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option6"  disabled=true><b><span class="label_class1">Meningoencephalitis/aseptic meningitis</span></b>
+          </label>
+          <!-- <label class="radio-inline" style="margin-left:0px;">
+            <input type="checkbox" name="group3" (click)="test3_col3_check7()"><b>Combination of these</b>
+            <input  type="text" class="w3-input w3-border" [hidden]="!(others2)">
+          </label> -->
+
+          <label class="radio-inline check_class" style="margin-left:0px;width:100%;">
+            <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option7" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option7"  disabled=true><b><span class="label_class1">If none of the above, specify</span></b>
+            <textarea  type="text" class="w3-input w3-border" [(ngModel)]="test3_col3_option7_text" [ngModelOptions]="{standalone: true}"  [hidden]="!(others2)" disabled=true></textarea>
+          </label>
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+          <label class="w3-text-black" for="au_dd_no"><b>Current Clinical Status  </b></label>
+          <br>
+          <label class="radio-inline">
+            <input type="radio" value="1" name="test3_col4_radio1" [(ngModel)]="test3_col4_radio1" [ngModelOptions]="{standalone: true}"   disabled=true><b>Symptomatic</b><br>
+            
+          </label>  <br>
+
+          <label class="radio-inline">
+            <input type="radio" value="2" name="test3_col4_radio1" [(ngModel)]="test3_col4_radio1" [ngModelOptions]="{standalone: true}"  disabled=true><b>Remission</b>
+          </label><br>
+          
+        </div>
+       
+      </div>
+
+
+      <input type="checkbox" class="example-margin" [(ngModel)]="test4" [ngModelOptions]="{standalone: true}" [checked]="test4"  disabled=true /><b> 4) Autoimmune Encephalitis mosaic [NMDA, VGKC (CASPR2, LGI 1) , AMPA 1 &2, GABA: immunofluorescence]</b>
+      <span [hidden]="!(check4)"><input type="checkbox" class="example-margin" [(ngModel)]="test4_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  disabled=true /><b><span class="label_class1">Serum</span></b><input type="checkbox" class="example-margin" [(ngModel)]="test4_csf" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"   disabled=true /><b><span class="label_class1">CSF</span></b></span><br>
+      
+      <div class="col-md-12 col-sm-12" [hidden]="!(test4)"> 
+        <br>
+        <div class="col-md-4 col-sm-4">
+
+          <label class="w3-text-black" for="au_dd_no"><b>Clinical Syndrome </b></label>
+          
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option1" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option1"  disabled=true><b><span class="label_class1">NMDA [seizures, orofacial dyskinesia, dysautonomia]</span></b> 
+          </label>
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option2" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option2"  disabled=true><b><span class="label_class1">LGI1 [Faciobrachial dystonic seizures]</span></b>
+          </label>
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option3" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option3"  disabled=true><b><span class="label_class1">CASPR 2 [Morvan syndrome]</span></b>
+          </label>
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option4" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option4"  disabled=true><b><span class="label_class1">AMPA/GABA [seizures, refractory status]</span></b>
+          </label>
+
+          <!-- <label class="radio-inline" style="margin-left:0px;">
+            <input type="checkbox" name="group5" (click)="test4_col1_check5()"><b>DPPX [Myoclonus, hyperplexia, diarrhoea, seizures]</b>
+          </label> -->
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option5" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option5"  disabled=true><b><span class="label_class1">IgLON 5 [REM NREM parasomnia]</span></b>
+          </label>
+
+          <label class="radio-inline check_class"style="margin-left:0px;width:100%;" >
+            <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option6" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option6"  disabled=true><b><span class="label_class1">If none of the above, specify</span></b>
+            <textarea  type="text" [(ngModel)]="test4_col1_option6_text" [ngModelOptions]="{standalone: true}"  class="w3-input w3-border" [hidden]="!(others4)" disabled=true></textarea>
+          </label>
+          
+          </div>
+
+        
+        <div class="col-md-4 col-sm-4">
+          <label class="w3-text-black" for="au_dd_no"><b>Known Malignancy </b></label>
+          <br>
+          <label class="radio-inline">
+            <input type="radio" value="1" name="test4_col2_radio1" [(ngModel)]="test4_col2_radio1" [ngModelOptions]="{standalone: true}"   disabled=true><b>Yes</b><br>
+            
+          </label>  <br>
+
+          <label class="radio-inline">
+            <input type="radio" value="2" name="test4_col2_radio1" [(ngModel)]="test4_col2_radio1" [ngModelOptions]="{standalone: true}"  disabled=true><b>No</b>
+          </label><br>
+          <textarea placeholder="" [(ngModel)]="test4_yes_text" [ngModelOptions]="{standalone: true}" type="text" class="w3-input w3-border"  [hidden]="!(site1)" disabled=true></textarea>
+
+
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <label class="w3-text-black" for="au_dd_no"><b>Current Clinical Status  </b></label>
+          <br>
+          <label class="radio-inline">
+            <input type="radio" value="1" name="test4_col3_radio1" [(ngModel)]="test4_col3_radio1" [ngModelOptions]="{standalone: true}"   disabled=true><b>Symptomatic</b><br>
+            
+          </label>  <br>
+
+          <label class="radio-inline">
+            <input type="radio" value="2" name="test4_col3_radio1" [(ngModel)]="test4_col3_radio1" [ngModelOptions]="{standalone: true}"  disabled=true><b>Remission</b>
+          </label><br>
+        
+        </div>
+      </div>
+
+
+      <input type="checkbox" class="example-margin" [(ngModel)]="test5" [ngModelOptions]="{standalone: true}" [checked]="test5"  disabled=true /><b> 5) Paraneoplastic neuronal antibodies (Amphiphysin, CV2, PNMA2 (Ma2/Ta), Ri, Yo, Hu,GAD, Titin, Recoverin, SOX1, Zic4, Tr): by immunofluorescence, confirmation by immunoblot)</b>
+      <span [hidden]="!(check5)"><input type="checkbox" class="example-margin" [(ngModel)]="test5_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true  /><b><span class="label_class1">Serum</span></b></span><br>
+      
+      <div class="col-md-12 col-sm-12" [hidden]="!(test5)">
+        <br> 
+       <div class="col-md-4 col-sm-4">
+
+         <label class="w3-text-black" for="au_dd_no"><b>Clinical Syndrome </b></label>
+         <br>
+        <label class="radio-inline">
+              <input type="radio" name="group8" value="1" name="test5_col1" [(ngModel)]="test5_col1" [ngModelOptions]="{standalone: true}"  disabled=true><b>CNS</b>
+            </label><br>
+
+            <div [hidden]="!cns_checked">
+              <br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8a" [(ngModel)]="test5_cns_option1" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option1"  disabled=true><b><span class="label_class1">Cerebellar degeneration</span></b>
+              </label><br>
+  
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8b"  [(ngModel)]="test5_cns_option2" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option2"  disabled=true><b><span class="label_class1">Brain stem encephalomyelitis</span></b>
+              </label><br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option3" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option3"   disabled=true><b><span class="label_class1">Stiff person syndrome</span></b>
+              </label><br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option4" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option4"  disabled=true><b><span class="label_class1">PERM</span></b>
+              </label><br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option5" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option5"  disabled=true><b><span class="label_class1">Opsoclonus-myoclonus</span></b>
+              </label><br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option6" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option6"   disabled=true><b><span class="label_class1">Opsoclonus-ataxia</span></b>
+              </label><br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8c"  [(ngModel)]="test5_cns_option7" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option7"  disabled=true><b><span class="label_class1">Retinal degeneration</span></b>
+              </label><br><br>
+       </div>
+         <label class="radio-inline ">
+           <input type="radio" value="2" name="test5_col1" [(ngModel)]="test5_col1" disabled=true><b>PNS</b>
+         </label><br>
+
+         <div [hidden]="!pns_checked">
+          <br>
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group8b" [(ngModel)]="test5_pns_option1" [ngModelOptions]="{standalone: true}" [checked] = "test5_pns_option1"  disabled=true><b><span class="label_class1">sensory neuronopathy</span></b>
+          </label><br>
+
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group8b"  [(ngModel)]="test5_pns_option2" [ngModelOptions]="{standalone: true}" [checked] = "test5_pns_option2"  disabled=true><b><span class="label_class1">sensorimotor neuropathy</span></b>
+          </label><br>
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group8c" [(ngModel)]="test5_pns_option3" [ngModelOptions]="{standalone: true}" [checked] = "test5_pns_option3"  disabled=true><b><span class="label_class1">autonomic neuropathy</span></b>
+          </label><br><br>
+          
+         </div>
+
+         <label class="radio-inline">
+           <input type="radio" value="3" name="test5_col1" [(ngModel)]="test5_col1" disabled=true><b>NMJ</b>
+         </label><br>
+         <div [hidden]="!nmj_checked">
+          <br>
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group8b" [(ngModel)]="test5_nmj_option1" [ngModelOptions]="{standalone: true}" [checked] = "test5_nmj_option1"   disabled=true><b><span class="label_class1">LEMS</span></b>
+          </label><br>
+
+          <label class="radio-inline check_class">
+            <input type="checkbox" name="group8b" [(ngModel)]="test5_nmj_option2" [ngModelOptions]="{standalone: true}" [checked] = "test5_nmj_option2"  disabled=true><b><span class="label_class1">Myasthenia</span></b>
+          </label><br><br>
+           
+          
+         </div>
+        
+
+         <label class="radio-inline" style="width:100%;" >
+          <input type="radio" name="group8" value="4" name="test5_col1" [(ngModel)]="test5_col1"  [ngModelOptions]="{standalone: true}"  disabled=true><b>If none of the above, specify</b>
+        </label>
+          <textarea  style="margin-top:10px;" type="text" class="w3-input w3-border" [(ngModel)]="test5_others_text" [ngModelOptions]="{standalone: true}" [hidden]="!(others5)"  disabled=true></textarea>
+        
+         
+         </div>
+
+       
+       <div class="col-md-4 col-sm-4">
+         <label class="w3-text-black" for="au_dd_no"><b>Known Malignancy </b></label>
+         <br><label class="radio-inline">
+          <input type="radio" value="1" name="test5_col2_radio1" [(ngModel)]="test5_col2_radio1" [ngModelOptions]="{standalone: true}"   disabled=true><b>Yes</b><br>
+          
+        </label><br>
+
+        <label class="radio-inline">
+          <input type="radio" value="2" name="test5_col2_radio1" [(ngModel)]="test5_col2_radio1" [ngModelOptions]="{standalone: true}"  disabled=true><b>No</b>
+        </label><br>
+        <textarea placeholder="" style="margin-top:10px;" [(ngModel)]="test5_yes_text" [ngModelOptions]="{standalone: true}" type="text" class="w3-input w3-border" [hidden]="!(site2)"  disabled=true></textarea>
+
+
+         
+       </div>
+       <div class="col-md-4 col-sm-4">
+         <label class="w3-text-black" for="au_dd_no"><b>Current Clinical Status  </b></label>
+         <br>
+         <label class="radio-inline">
+          <input type="radio" value="1" name="test5_col3_radio1" [(ngModel)]="test5_col3_radio1" [ngModelOptions]="{standalone: true}"   disabled=true><b>Symptomatic</b><br>
+          
+        </label><br>
+
+        <label class="radio-inline">
+          <input type="radio" value="2" name="test5_col3_radio1" [(ngModel)]="test5_col3_radio1" [ngModelOptions]="{standalone: true}"  disabled=true><b>Remission</b>
+        </label><br>
+       
+       </div>
+     </div>
+
+
+      <input type="checkbox" class="example-margin" [(ngModel)]="test6" [ngModelOptions]="{standalone: true}" [checked]="test6"  disabled=true  /><b> 6) Myositis Profile 4 (immunoblot): (Mi-2α, Mi-2β, TIF1, MDA5, NXP2, SAE1, Ku, PM-Scl100, PM-Scl75, Jo-1, SRP, PL-7, PL-12, EJ, OJ and Ro-52)</b>
+      <span [hidden]="!(check6)"><input type="checkbox" class="example-margin" [(ngModel)]="test6_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true  /><b><span class="label_class1">Serum</span></b></span><br>
+      
+      
+      <input type="checkbox" class="example-margin" [(ngModel)]="test7" [ngModelOptions]="{standalone: true}" [checked]="test7"  disabled=true /><b> 7) Anti-Ganglioside Profile (IgG). (GM1, GM2, GM3, GD1a, GD1b, GT1b, GQ1b) (Immunoblot)</b>
+      <span [hidden]="!(check7)"><input type="checkbox" class="example-margin" [(ngModel)]="test7_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true  /><b><span class="label_class1">Serum</span></b></span><br>
+      
+      
+      <input type="checkbox" class="example-margin" [(ngModel)]="test8" [ngModelOptions]="{standalone: true}" [checked]="test8"  disabled=true /><b> 8) Anti-Ganglioside Profile (IgM). (GM1, GM2, GM3, GD1a, GD1b, GT1b, GQ1b) (Immunoblot)</b>
+      <span [hidden]="!(check8)"><input type="checkbox" class="example-margin" [(ngModel)]="test8_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true  /><b><span class="label_class1">Serum</span></b></span><br>
+      
+      
+      <input type="checkbox" class="example-margin" [(ngModel)]="test9" [ngModelOptions]="{standalone: true}" [checked]="test9"  disabled=true /><b> 9) Anti-DPPX (immunofluorescence)</b>
+      <span [hidden]="!(check9)"><input type="checkbox" class="example-margin" [(ngModel)]="test9_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true /><b><span class="label_class1">Serum</span></b>
+        <!-- <input type="checkbox" class="example-margin" [(ngModel)]="test9_csf" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" disabled=true  /><b>CSF</b> -->
+      </span><br>
+
+      <div class="col-md-12 col-sm-12" [hidden]="!(test9)"> 
+        <br>
+        <div class="col-md-4 col-sm-4">
+
+          <label class="w3-text-black" for="au_dd_no"><b>Clinical Syndrome </b></label>
+          <br> 
+         
+           <label class="radio-inline" style="margin-left:0px;"><b>DPPX</b>
+            <!-- <input type="radio" name="group5"><b>DPPX</b> -->
+          </label><br> <br>
+
+        
+          <!-- <label class="radio-inline"  style="margin-left:0px;">
+            <input type="checkbox " name="group5" (click)="test4_col1_radiobutton5()"><b>Myoclonus</b> 
+          </label><br>  -->
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option1" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option1"   disabled=true><b><span class="label_class1">Myoclonus</span></b>
+          </label><br>
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option2" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option2"  disabled=true><b><span class="label_class1">Hyperplexia</span></b>
+          </label><br> 
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option3" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option3"  disabled=true><b><span class="label_class1">Diarrhoea</span></b>
+          </label><br> 
+
+          <label class="radio-inline check_class" style="margin-left:0px;">
+            <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option4" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option4"  disabled=true><b><span class="label_class1">Seizures</span></b>
+          </label>
+          
+          </div>
+
+        
+        <div class="col-md-4 col-sm-4">
+          
+          
+        </div>
+        <div class="col-md-4 col-sm-4">
+        
+        </div>
+      </div>
+      
+       
+    
+    </section>
+  </div>
+  </div> 
+
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+   
+            <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+ 
+              <div class="panel panel-default fixed-bottom">
+                <div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px; ">
+            <label class="radio-inline">
+              <input type="radio" name="optradio" [checked]="dd_checked" disabled=true>DD 
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" [checked]="online_checked"  disabled=true>Online Transaction 
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" [checked]="cash_checked"  disabled=true>Cash Payment
+            </label>
+            </div>
+            </div>
+            
+          </div>
+
+              
+           
+
+            <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+              
+                      <div class="panel panel-default fixed-bottom">
+                       <div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px; "><b>DD No:</b>{{dd_array[0]?.au_dd_no}} </div>
+                        </div>
+                       
+                       </div>
+
+
+            <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+              
+                      <div class="panel panel-default fixed-bottom">
+                       <div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px; "><b>Online Transaction No:</b>{{dd_array[0]?.au_trans_no}} </div>
+                        </div>
+                       
+                       </div>
+                     </div>
+                    </div>
+
+<div class="row">
+<div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+
+<div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+
+<div class="panel panel-default fixed-bottom">
+<div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px; "><b>Bank Name:</b>{{dd_array[0]?.au_bank_name}} </div>
+</div>
+
+</div>
+<div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+
+<div class="panel panel-default fixed-bottom">
+  <div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px; "><b>Date:</b> {{dd_array[0]?.au_date_of_dd.formatted}}</div>
+  </div>
+  
+  </div>
+  <div class="col-md-4 col-sm-4" style="padding-left:0px;padding-right:0px;">
+  
+          <div class="panel panel-default fixed-bottom">
+            <div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px; "><b>Amount:</b>{{Test_total_amount}} </div>
+            </div>
+            
+            </div>                                  
+
+
+</div>
+</div>
+<div class="row" id="file_upload">
+  <div class="col-md-12 col-sm-12" style="margin-bottom:5px;">
+    <div class="panel panel-success">
+        <!-- <div class="panel-heading"><b>Uploaded file</b></div>   -->
+      <div class="panel-body"><b>Uploaded Files:{{count}}</b> 
+        <!-- <a [href]="sample[0]?.sample_image_url" target="_blank"> 
+       <img [src]="sample[0]?.sample_image_url" height="50" width="50"/> </a>  -->
+          </div>
+        </div>
+
+      </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+  <div class="panel panel-success" style="margin-bottom:5px;">
+    
+    <div class="panel-body" style="padding-top:4px;padding-bottom:4px;"><b>Remarks:</b>{{au_sample[0]?.au_remarks}} </div>
+  </div> 
+
+</div>
+</div>
+
+          <!-- <div class="row" >
+            <div class="col-md-12 col-sm-12" style="margin-top:10px;">
+                <div class="panel-body" style="text-align:right;"><b>Signature + contact No.</b></div>
+              </div>
+              </div> -->
+
+    <div class="row" style="margin-top:0px;">
+      <div class="col-md-12 col-sm-12" style="margin-top:0px;">
+          <div class="panel-body" style="text-align:left;padding-top:4px;padding-bottom:4px;"><b>
+            <label class="" style="text-align:justify;"> <span style="color:black;">E-mail:</span> autoimmuneneurologylab@gmail.com/mahadevananita@gmail.com</label><br>
+            <label class=""  style="text-align:justify;"> <span style="color:black;">Tel: </span>080-26995094/26995137</label><br>
+
+          </b></div>
+        </div>
+        </div>
+      </div> 
+                        
+
+<div class="row" style="text-align:center;">
+<button id="printbutton" style="margin-top:5px;" class="btn btn-success"  onClick="window.print();">Download PDF</button>
+</div> 
+</div>
+<br>
+
+
+

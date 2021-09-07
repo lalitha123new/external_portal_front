@@ -1,0 +1,101 @@
+
+
+<div class="w3-container" style="background-color:#f2f2f2;">
+	<div class="row" style="margin:0px;padding:0px;">
+		<div class="col-md-12" style="margin:0px;padding:0px;">
+	<div class="w3-panel w3-round-small w3-teal" style="margin:0px;padding:0px;">
+		 <h3 style="padding-left:10px;">Sample List 
+			<!-- <button routerLink="/dashboard/add" class="w3-button w3-green custom-button" style="float:right;margin-right:10px;padding:5px;"><i class="w3-medium  fa fa-plus"></i> New Test</button> -->
+		 </h3>
+	</div>
+</div>
+</div>
+	
+	
+		<div class="row" style="margin-left:0px;margin-top:20px;background-color:#f2f2f2;">
+			<div class=" col-md-12" style="margin-left:0px;">
+			<div class="col-md-5">
+	<span><i class="w3-medium fa fa-search"></i> Search By Name Or By Referring Hosp.Patient Id: <input  [(ngModel)] = "searchTerm"  class="" type="text"  /></span>
+</div>	
+	
+	
+		<!-- <span> -->
+			<div class=" dropdown col-md-1">
+				
+				<!-- <button class="btn btn-default" type="button" (click)="Reset()">Reset</button> -->
+				
+
+				</div>
+				
+			 <div class="dropdown col-md-1">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a  (click)="SortS('status')" >Status</a></li>
+						<li><a  (click)="SortS('pat_name')" >Name</a></li>
+						<li><a  (click)="SortS('referred_by')" >Referred_By</a></li>
+						<li><a  (click)="SortS('npno')" >Neuropath No.</a></li>
+						<li><a  (click)="getTestListSort()" >Date</a></li>
+						
+					</ul>		
+				</div> 
+				<div class="col-md-5"></div>
+				<!-- <select>
+					<option (click)="SortS()">Status</option>
+				</select> -->
+			<!-- </span>	 -->
+		</div>
+
+
+		
+		<div class="row" style="margin-left:0px;padding:0px;">
+			<div class="w3-col m12" style="margin-left:0px;text-align:center;">
+				<div class="w3-panel w3-green" *ngIf="(userList | filter:searchTerm).length == 0" style="margin-left:0px;">
+					<h3></h3>
+					<p> <span *ngIf="searchTerm"> with search "{{searchTerm}}"</span> </p>
+				</div>
+			</div>
+		</div>		
+
+	
+	
+	<br>
+
+	<div id="div" class="col-md-12" style="margin-left:0px;padding-top:0px;text-align:center;overflow-x: auto;">
+		
+				<table class="table table-hover" style="background-color: #fff;border:1px solid black;width:100%">
+				
+				<tr>
+
+				<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-ravelry"></i>Sr. No.</th>
+				<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-hospital-o"></i>Referring Hosp.Patient Id</th>
+				<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-user"></i>Name</th>
+				<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-venus-mars"></i>Gender</th>
+				<th class="border_class success header_class"><i class="w3-small custom-icon fa fa-user-md"></i>Referred By</th>
+				<th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-snowflake-o"></i>Neuropath No.</th>
+				<th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-calendar-o"></i>Date Of Request</th>
+				<th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-hospital-o"></i>Status</th>
+				<th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-pencil"></i>Edit</th>
+				<th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-clone"></i>Print</th>
+				<th class="border_class success header_class"><i class="w3-medium custom-icon fa fa-comment-o"></i>Message</th>
+			</tr>
+
+			<tr *ngFor="let test of userList | paginate: { itemsPerPage: 20, currentPage: p } | filter:searchTerm; let i = index">
+				<td>{{i+1}}</td>
+				<td>{{test.hosp_ref_no}}</td>
+				<td class="pointer" >{{test.pat_name}} </td>
+				<td class="pointer" >{{test.pat_gender}} </td>
+				<td class="pointer" >{{test.referred_by}}</td>
+				<td class="pointer" *ngIf="test.npno!=null">{{test.npno}}</td><td class="pointer" *ngIf="test.npno==null">{{test.npno}}</td>
+				<td class="pointer" >{{test.date_of_entry}}</td>
+				<td class="pointer" >{{test.status}}</td> 
+				<td><button [routerLink]="['/dashboard/update',test.sample_id]" [disabled]="checkstatus(test)" class="w3-button w3-blue"><span>Edit</span></button></td>
+				<td><button [routerLink]="['/preview',test.sample_id]" class="w3-button w3-blue">Print Request</button></td>
+				<td><button type="button" (click)="sendTheMessage(test.sample_id,test.npno)" title="send message" class="btn btn-primary">Send Message</button></td>
+			</tr>
+		</table>
+	</div>
+	<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>
+
+

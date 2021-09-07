@@ -1,0 +1,34 @@
+<div id="header" class="w3-container" >
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>Sample Details  <button routerLink="/dashboard/testlist" class="w3-button w3-green custom-button margin-right"> <i class="w3-medium fa fa-chevron-left"></i> Back</button></h3>
+	</div>
+</div>
+		
+		<div id="id"class="container">
+			<div class="panel-group">
+				<div class="panel panel-success">
+					<div class="panel-heading"><b>Name</b></div>
+					<div class="panel-body" >{{sample[0]?.pat_name}}</div>
+					<div class="panel-heading"><b>Age</b></div>
+					<div class="panel-body">{{sample[0]?.pat_age}}</div>
+					<div class="panel-heading"><b>Gender</b></div>
+					<div class="panel-body">{{sample[0]?.pat_gender}}</div>
+					<div class="panel-heading"><b>Specimen</b></div>
+					<div class="panel-body">{{sample[0]?.specimen}}</div>
+					<div class="panel-heading"><b>Fixative</b></div>
+					<div class="panel-body">{{sample[0]?.fixative}}</div>
+					<div class="panel-heading"><b>Referred by</b></div>
+					<div class="panel-body">{{sample[0]?.referred_by}}</div>
+					<div class="panel-heading"><b>History</b></div>
+					<div class="panel-body">{{sample[0]?.clinic_history}}</div>
+					<div class="panel-heading"><b>Examination</b></div>
+					<div class="panel-body">{{sample[0]?.examination}}</div>
+					<div class="panel-heading"><b>Status</b></div>
+					<div class="panel-body">{{sample[0]?.status}}</div>
+					</div>
+				</div>
+		</div>
+		
+
+		
+	

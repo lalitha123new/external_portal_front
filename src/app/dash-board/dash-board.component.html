@@ -1,0 +1,51 @@
+
+
+<app-header1></app-header1>
+
+
+<div class="w3-row" style="margin-top:-32px;">
+  <div class="col-md-12 col-sm-12" style="padding:0px;">
+  
+<div class="w3-bar w3-light-grey" style="margin:auto;" id="mySidebar">
+    
+    <div class="col-md-5 col-xs-12">
+
+    <!-- <a class="w3-bar-item w3-button" [ngClass]="{'w3-teal': (active == '/dashboard/testlist')}" routerLink="/dashboard/testlist" style="margin-top:20px;"> <i class="w3-medium fa fa-user"></i>  Sample List</a> -->
+    
+    <a class="w3-bar-item w3-button" [ngClass]="{'w3-teal': (active == '/dashboard/testlist')}" (click)="testlist()" style="margin-top:20px;padding:10px;"> <i class="w3-medium fa fa-user"></i>  Sample List</a>
+    <a class="w3-bar-item w3-button" routerLink="/dashboard/add"  [ngClass]="{'w3-teal': (active == '/dashboard/add')}" style="margin-top:20px;"> <i class="w3-medium fa fa-plus"></i> New Sample</a>
+    <!-- <a class="w3-bar-item w3-button" routerLink="/lablist"  style="margin-top:20px;"><i class="w3-medium fa fa-home"></i> Home</a> -->
+    <a class="w3-bar-item w3-button"  (click) = "home()"  style="margin-top:20px;"><i class="w3-medium fa fa-home"></i> Home</a>
+    
+  </div>
+
+  <div class="col-md-5 col-xs-12">
+
+      <h4>Welcome to NIMHANS, {{username}}</h4>
+        Contact:  {{hospitaldetails?.phone}}<br>
+        EmailId:  {{hospitaldetails?.mail}}
+   
+</div>
+
+  
+  <div class="col-md-2 col-xs-12">
+    
+      <a id="notify_div" [ngClass]="{'': (active == '/dashboard/notification')}" (click) ="notify()" class="notification"  title="click here to see the Notifications" style="cursor:pointer;margin-top:20px;text-align:right;"></a>
+      <a class="w3-bar-item w3-button" (click)="logOut()" style="float:right;margin-top:20px;"><i class="w3-medium fa fa-sign-out"></i>  Logout</a>
+  
+    </div>
+  
+</div>
+
+</div>
+</div>
+
+
+<div class="w3-main" style="padding:0px;">
+    <div class="w3-container" style="padding:0px;">
+      <div class="w3-row" style="padding-top:1px;">
+    <!-- Initiate Child Routing -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,36 @@
+.pointer {cursor: pointer;}
+.arrow:after {
+    content: '\2192';
+    font-size: 50px;
+}
+
+@media ( min-width : 1281px) {
+
+    .arrow:after {
+        content: '\2192';
+        font-size: 50px;
+    }
+    .text_class{
+        font-size:15px;
+    }
+
+}
+
+@media only screen and (max-width: 1175px) and (min-width: 901px)  {
+    .responsive{
+        width:60px;
+        
+    }
+
+}
+
+@media only screen and (max-width: 900px) and (min-width: 300px)  {
+    .arrow:after {
+        content: '\2192';
+        font-size: 50px;
+    }
+    .text_class{
+        font-size:15px;
+    }
+
+}

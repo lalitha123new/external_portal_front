@@ -1,0 +1,774 @@
+<app-header2></app-header2>
+
+<div class="col-md-12" style="padding:0px;margin-top:0px;"> 
+  <div class="w3-panel w3-round-small" style="padding-top:0px;margin-top:0px;background-color: #df80ff;">
+  
+  <h3><span style="text-align:left;">Patient Registration</span>
+    <a class="w3-button w3-green custom-button" (click)="back()"  style="margin-top:0px;float:right;"> Back</a>
+     
+  </h3>
+  
+  </div>
+</div>
+
+<div  id="section1_" class="w3-container">
+
+  <div style="border:1px solid black;background-color: #f2f2f2;margin-top:50px;">
+
+    <form class="w3-container w3-animate-left" [formGroup]="form" *ngIf="form" novalidate   (ngSubmit)="addAUPatient()">
+      <div class="col-md-12">
+       <div class="col-md-12" style="margin-top:10px;padding-left:10px;">
+         <!-- <p style="color:red;"><b>*All fields are mandatory. Do NOT use Neuropathology biopsy request cards please</b></p> -->
+       </div>
+      </div>
+      <div class="col-md-12" style="padding-top:20px;">
+
+        <div class="col-md-3">
+              
+          <div>
+            <label class="w3-text-blue" for="au_pat_name"><i class="w3-medium custom-icon fa fa-user"></i><b> Name<span style="color:red;">*</span></b></label>
+            <input type="text" 
+            formControlName="au_pat_name"  
+            placeholder="Enter Name" title="Name of patient"
+            class="w3-input w3-border">
+            <div *ngIf=" form.get('au_pat_name').touched && form.get('au_pat_name').invalid" class="w3-panel w3-red w3-round-xlarge">
+              <div *ngIf=" form.get('au_pat_name').hasError('required')">
+               Name is required
+              </div>
+              </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+          <div class="form_group">
+              <label class="w3-text-blue" for="au_pat_age"><i class="w3-medium custom-icon fa fa-user"></i><b> Age<span style="color:red;">*</span></b></label>
+              <input type="number" 
+              formControlName="au_pat_age" 
+              placeholder="Enter Age" title="Age of patient"
+              class="w3-input w3-border" maxlength="3"  >
+              <div *ngIf=" form.get('au_pat_age').touched && form.get('au_pat_age').invalid" class="w3-panel w3-red w3-round-xlarge">
+                <div *ngIf=" form.get('au_pat_age').hasError('required')">
+                 Age is required
+                </div>
+                </div>
+        
+          </div>
+        </div>
+
+        <div class="col-md-3">
+        
+          <div class="w3-text-blue" style="text-align:center;">
+            <label for="au_pat_gender" style="text-align:center;"><i class="fa fa-venus-mars" aria-hidden="true"></i>
+             <b> Gender<span style="color:red;">*</span></b><br>
+           
+            
+           <input type="radio" value="male" formControlName="au_pat_gender" class="w3-radio w3-round-small" style="margin-left:10px;"><label style="padding-right:10px;">M</label>
+           <input type="radio" value="female" formControlName="au_pat_gender" class="w3-radio"><label style="padding-right:10px;">F</label>
+            <input type="radio" value="Other" formControlName="au_pat_gender" class="w3-radio"><label style="padding-right:10px;">O</label>
+          </label>
+            <div *ngIf=" form.get('au_pat_gender').touched && form.get('au_pat_gender').invalid" class="w3-panel w3-red w3-round-xlarge">
+              <div *ngIf=" form.get('au_pat_gender').hasError('required')">
+               gender is required
+              </div>
+              </div>
+            </div> 
+       </div> 
+
+       <div class="col-md-3">
+        
+        <div class="form-group">
+          <label class="w3-text-blue"  for="au_hosp_ref_no"><i class="w3-medium custom-icon fa fa-hospital-o"></i><b>Referring Hosp.Patient Id<span style="color:red;">*</span></b></label>
+          <input type="text" 
+          formControlName="au_hosp_ref_no"
+          placeholder="Enter Patient registration number" title="Patient registration number in your hospital for cross reference"
+          class="w3-input w3-border">
+          <div *ngIf=" form.get('au_hosp_ref_no').touched && form.get('au_hosp_ref_no').invalid" class="w3-panel w3-red w3-round-xlarge">
+            <div *ngIf=" form.get('au_hosp_ref_no').hasError('required')">
+              Referring Hosp.Patient Id is required
+            </div>
+            </div>
+        
+        
+        </div>
+     </div> 
+
+      </div>
+
+
+      
+      <div class="col-md-12">
+
+        <div class="col-md-4">
+          <label class="w3-text-blue" for="au_referred_by"><i class="fa fa-user-md" aria-hidden="true"></i><b> Referred By<span style="color:red;">*</span></b></label>
+           
+           
+           <input type="text" 
+           formControlName="au_referred_by"
+           placeholder="Enter Referred By" title="Name of consultant"
+           class="w3-input w3-border">
+           <div *ngIf=" form.get('au_referred_by').touched && form.get('au_referred_by').invalid" class="w3-panel w3-red w3-round-xlarge">
+            <div *ngIf=" form.get('au_referred_by').hasError('required')">
+             Referred by is required
+            </div>
+            </div>
+           </div>
+
+           <div class="col-md-4">
+            <div class="form-group">
+              <label class="w3-text-blue" for="au_doctor_phone_no"><i class="fa fa-phone" aria-hidden="true"></i><b> Consultant Mobile Number<span style="color:red;">*</span></b></label>
+                  
+                   <input type="number" 
+                   formControlName="au_doctor_phone_no"
+                required
+                   placeholder="Enter Mobile Phone Number" title="Mobile number of consultant"
+                   class="w3-input w3-border">
+
+                   <div *ngIf=" form.get('au_doctor_phone_no').touched && form.get('au_doctor_phone_no').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('au_doctor_phone_no').hasError('required')">
+                     Consultant mobile number is required
+                    </div>
+                    </div>
+                   
+                  </div>
+                  </div>
+
+                  <div class="col-md-4">
+
+                    <div class="form-group">
+                      <label class="w3-text-blue" for="au_doctor_email_id"><i class="fa fa-envelope" aria-hidden="true"></i><b> Consultant E-mail Address<span style="color:red;">*</span></b></label>
+                             
+                             
+                             <input type="email" 
+                             formControlName="au_doctor_email_id"
+                             placeholder="Enter E-mail Address" title="E-mail address of consultant"
+                             class="w3-input w3-border" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                             <div *ngIf=" form.get('au_doctor_email_id').touched && form.get('au_doctor_email_id').invalid" class="w3-panel w3-red w3-round-xlarge">
+                              <div *ngIf=" form.get('au_doctor_email_id').hasError('required')">
+                               Consultant e-mail address is required
+                              </div>
+                              <div *ngIf=" form.get('au_doctor_email_id').hasError('pattern')">
+                                Invalid e-mail address
+                               </div>
+                              </div>
+                            </div>
+                            </div>
+      </div>
+<div class="col-md-12">
+
+        <div class="col-md-4">
+          <label class="w3-text-blue" for="au_pat_phno"><i class="fa fa-user-md" aria-hidden="true"></i><b> Patient Mobile Number<span style="color:red;">*</span></b></label>
+           
+           
+           <input type="number" 
+           formControlName="au_pat_phno"
+           placeholder="Enter Patient Mobile Number" title="Mobile number of patient"
+           class="w3-input w3-border">
+           <div *ngIf=" form.get('au_pat_phno').touched && form.get('au_pat_phno').invalid" class="w3-panel w3-red w3-round-xlarge">
+            <div *ngIf=" form.get('au_pat_phno').hasError('required')">
+             Patient mobile number is required
+            </div>
+            </div>
+           </div>
+
+           <div class="col-md-4">
+            <div class="form-group">
+              <label class="w3-text-blue" for="au_pat_email"><i class="fa fa-phone" aria-hidden="true"></i><b> Patient E-mail Address<span style="color:red;">*</span></b></label>
+                  
+                   <input type="email" 
+                  
+                   formControlName="au_pat_email"
+                   placeholder="Enter Patient E-mail" title="E-mail address of patient"  pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                   class="w3-input w3-border">
+                   <div *ngIf=" form.get('au_pat_email').touched && form.get('au_pat_email').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('au_pat_email').hasError('required')">
+                     Patient e-mail address is required
+                    </div>
+                    <div *ngIf=" form.get('au_pat_email').hasError('pattern')">
+                      Invalid e-mail address
+                     </div>
+                    </div>
+                   
+                  </div>
+                  </div>
+
+                  <div class="col-md-4">
+
+                     <div class="form-group">
+                      <label class="w3-text-blue" for="hosp_address"><i class="fa fa-envelope" aria-hidden="true"></i><b> Hosp.address</b></label>
+                             
+                             
+                             <input type="text" 
+                            
+                             [(ngModel)]="hosp_address" [ngModelOptions]="{standalone: true}"
+                             class="w3-input w3-border" disabled=true />
+                             
+                            </div> 
+                            </div>
+      </div>
+      <!-- <div class="col-md-12">
+        <label class="w3-text-blue" for="" style="padding-left:10px;"><i class="fa fa-user" aria-hidden="true"></i><b> Type of sample (tick appropriate)<span style="color:red;">*</span></b></label>
+            
+        <div *ngFor="let i of importResults" style="padding-left:10px;">
+        <input type="checkbox"
+        [checked]="i.checked"
+        value="{{ i.value }}"
+        (click)="change(i)"/><label class="w3-text-blue">{{ i.value }}</label>
+      </div>
+        
+      </div> -->
+
+      <div class="col-md-12">
+      <div class="col-md-12" style="margin-top:20px;padding-left:10px;">
+
+        <label class="w3-text-blue" for="au_clinic_history"><i class="fa fa-history" aria-hidden="true"></i><b> Clinical Details<span style="color:red;">*</span></b></label>
+        
+                
+        <input 
+         type="text"
+         formControlName="au_clinic_history"
+        placeholder="Enter Clinical Details"  title="Clinical details"
+        class="w3-input w3-border">
+
+        <div *ngIf=" form.get('au_clinic_history').touched && form.get('au_clinic_history').invalid" class="w3-panel w3-red w3-round-xlarge">
+          <div *ngIf=" form.get('au_clinic_history').hasError('required')">
+           Clinical details is required
+          </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-md-12" style="margin-top:20px;padding-left:10px;">
+      <label class="w3-text-blue" for="" style="padding-left:10px;padding-bottom:10px;"><i class="fa fa-user" aria-hidden="true"></i><b> TESTS REQUIRED (Tick relevant investigations)<span style="color:red;">*</span></b></label><br>
+                           
+      <!-- <div *ngFor="let i of Tests" style="padding-left:10px;">
+        <input type="checkbox"
+        [checked]="i.checked"
+        value="{{ i.value }}"
+        (click)="change1(i)"/><label class="w3-text-blue">{{ i.value }}</label>
+      </div> -->
+
+      
+      <section class="example-section">
+
+        <input type="checkbox"  class="example-margin" [(ngModel)]="test1" [ngModelOptions]="{standalone: true}" [checked]="test1" (click)="test_new1(test1?'0':'1')"/><b> 1) ANA profile (immunoblot): [nRNP/Sm, Sm, SS-A,Ro-52, SS-B, Scl-70, PM-Scl100,Jo-1, CENP B, PCNA, dsDNA, nucleosomes, histones, rib. P-prot.,AMA M2]</b>
+        <span [hidden]="!(check1)"> <input type="checkbox" class="example-margin" [(ngModel)]="test1_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" [checked]="test1_serum" disabled=true /><b><span class="label_class1">Serum</span></b></span>
+        <br>
+
+        <input type="checkbox" class="example-margin" [(ngModel)]="test2" [ngModelOptions]="{standalone: true}" [checked]="test2" (click)="test_new2(test2?'0':'1')" /><b> 2) ANCA (pANCA/cANCA)</b>
+        <span [hidden]="!(check2)"><input type="checkbox" class="example-margin" [(ngModel)]="test2_serum" [ngModelOptions]="{standalone: true}"  style="margin-left:20px;" [checked]="test2_serum" disabled=true /><b><span class="label_class1">Serum</span></b></span>
+        <br>
+       
+        <input type="checkbox" class="example-margin" [(ngModel)]="test3" [ngModelOptions]="{standalone: true}" [checked]="test3" (click)="test_new3(test3?'0':'1')" /><b> 3) MOG NMOSD panel with NMO Aquaporin 4 Ab+ MOG antibodies </b>
+        <span [hidden]="!(check3)"><input type="checkbox" class="example-margin" [(ngModel)]="test3_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  (click) = "test3_new_serum(test3_serum?'0':'1')"  [checked] = "test3_serum" /><b><span class="label_class1">Serum</span></b><input type="checkbox" class="example-margin" [(ngModel)]="test3_csf" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  (click) = "test3_new_csf(test3_csf?'0':'1')"  [checked] = "test3_csf" /><b><span class="label_class1">CSF</span></b></span>
+        <br>
+
+        <div class="col-md-12" [hidden]="!(test3)"> 
+          <br>
+          <div class="col-md-3">
+
+            <label class="w3-text-blue"><i class="fa fa-history" aria-hidden="true"></i><b>NMOSD<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group1" style="margin-left:0px;" [(ngModel)]="test3_col1_option1" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option1" (click)="test3_col1_check1(test3_col1_option1?'0':'1')"><b><span class="label_class1">Optic neuritis</span></b>
+            </label><br>
+
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option2" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option2" (click)="test3_col1_check2(test3_col1_option2?'0':'1')"><b><span class="label_class1">Acute myelitis</span></b> 
+            </label><br>
+
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option3" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option3" (click)="test3_col1_check3(test3_col1_option3?'0':'1')"><b><span class="label_class1">Area postrema syndrome</span></b>
+            </label>
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option4" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option4"  (click)="test3_col1_check4(test3_col1_option4?'0':'1')"><b><span class="label_class1">Acute brainstem syndrome</span></b>
+            </label>
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option5" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option5" (click)="test3_col1_check5(test3_col1_option5?'0':'1')"><b><span class="label_class1">Symptomatic narcolepsy or acute diencephalic clinical syndrome with NMOSD-typical diencephalic MRI lesions</span></b>
+            </label>
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option6" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option6" (click)="test3_col1_check6(test3_col1_option6?'0':'1')"><b><span class="label_class1">Symptomatic cerebral syndrome with NMOSD-typical brain lesions</span></b>
+            </label>
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group1" [(ngModel)]="test3_col1_option7" [ngModelOptions]="{standalone: true}" [checked] = "test3_col1_option7" (click)="test3_col1_check7(test3_col1_option7?'0':'1')" ><b><span class="label_class1">If none of the above, specify</span></b>
+              <textarea  type="text" [(ngModel)]="test3_col1_option7_text" [ngModelOptions]="{standalone: true}"  class="w3-input w3-border" [hidden]="!(others1)" (input)="test3OthersText1($event.target.value)"></textarea>
+            </label>
+            
+            </div>
+
+          
+         
+          <div class="col-md-3">
+            <label class="w3-text-blue"><i class="fa fa-history" aria-hidden="true"></i><b>Current Clinical Status<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" name="group2" value="1" name="test3_col2_radio1" [(ngModel)]="test3_col2_radio1" [ngModelOptions]="{standalone: true}" (click)="test3_col2_radiobutton1()"><b>Symptomatic</b><br>
+              
+            </label> <br>
+
+            <label class="radio-inline">
+              <input type="radio" name="group2"  value="2" [(ngModel)]="test3_col2_radio1" [ngModelOptions]="{standalone: true}"  (click)="test3_col2_radiobutton2()"><b>Remission</b>
+            </label><br>
+          
+          </div>
+          <div class="col-md-3">
+           
+            <label class="w3-text-blue"><i class="fa fa-history" aria-hidden="true"></i><b>MOGAD<span style="color:red;">*</span></b></label><br>
+            
+            <label class="radio-inline check_class" >
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option1" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option1" (click)="test3_col3_check1(test3_col3_option1?'0':'1')"><b><span class="label_class1">ADEM</span></b>
+            </label><br>
+
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option2" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option2" (click)="test3_col3_check2(test3_col3_option2?'0':'1')"><b><span class="label_class1">Optic neuritis</span></b> 
+            </label><br>
+
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option3" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option3" (click)="test3_col3_check3(test3_col3_option3?'0':'1')"><b><span class="label_class1">Transverse myelitis</span></b> 
+            </label>
+
+            
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option4" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option4" (click)="test3_col3_check4(test3_col3_option4?'0':'1')"><b><span class="label_class1">Brain or brainstem demyelinating syndrome</span></b>
+            </label>
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option5" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option5" (click)="test3_col3_check5(test3_col3_option5?'0':'1')"><b><span class="label_class1">CRION (chronic relapsing inflammatory optic neuropathy)</span></b>
+            </label>
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option6" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option6" (click)="test3_col3_check6(test3_col3_option6?'0':'1')"><b><span class="label_class1">Meningoencephalitis/aseptic meningitis</span></b>
+            </label>
+            <!-- <label class="radio-inline" style="margin-left:0px;">
+              <input type="checkbox" name="group3" (click)="test3_col3_check7()"><b>Combination of these</b>
+              <input  type="text" class="w3-input w3-border" [hidden]="!(others2)">
+            </label> -->
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group3" [(ngModel)]="test3_col3_option7" [ngModelOptions]="{standalone: true}" [checked] = "test3_col3_option7" (click)="test3_col3_check7(test3_col3_option7?'0':'1')" ><b><span class="label_class1">If none of the above, specify</span></b>
+              <textarea  type="text" class="w3-input w3-border" [(ngModel)]="test3_col3_option7_text" [ngModelOptions]="{standalone: true}" (input)="test3OthersText2($event.target.value)" [hidden]="!(others2)"></textarea>
+            </label>
+          </div>
+
+          <div class="col-md-3">
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>. Current Clinical Status<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" value="1" name="test3_col4_radio1" [(ngModel)]="test3_col4_radio1" [ngModelOptions]="{standalone: true}"  (click)="test3_col4_radiobutton1()"><b>Symptomatic</b><br>
+              
+            </label>  <br>
+
+            <label class="radio-inline">
+              <input type="radio" value="2" name="test3_col4_radio1" [(ngModel)]="test3_col4_radio1" [ngModelOptions]="{standalone: true}" (click)="test3_col4_radiobutton2()"><b>Remission</b>
+            </label><br>
+            
+          </div>
+         
+        </div>
+
+        <input type="checkbox" class="example-margin" [(ngModel)]="test4" [ngModelOptions]="{standalone: true}" [checked]="test4" (click)="test_new4(test4?'0':'1')" /><b> 4) Autoimmune Encephalitis mosaic [NMDA, VGKC (CASPR2, LGI 1) , AMPA 1 &2, GABA]</b>
+        <span [hidden]="!(check4)"><input type="checkbox" class="example-margin" [(ngModel)]="test4_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;" (click) = "test4_new_serum(test4_serum?'0':'1')" [checked] = "test4_serum" /><b><span class="label_class1">Serum</span></b><input type="checkbox" class="example-margin" [(ngModel)]="test4_csf" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  (click) = "test4_new_csf(test4_csf?'0':'1')"  [checked] = "test4_csf" /><b>CSF</b></span>
+        <br>
+
+        <div class="col-md-12" [hidden]="!(test4)"> 
+          <br>
+          <div class="col-md-4">
+
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>Clinical Syndrome<span style="color:red;">*</span></b></label>
+            
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option1" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option1" (click)="test4_col1_check1(test4_col1_option1?'0':'1')"><b><span class="label_class1">NMDA [seizures, orofacial dyskinesia, dysautonomia]</span></b> 
+            </label>
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option2" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option2" (click)="test4_col1_check2(test4_col1_option2?'0':'1')"><b><span class="label_class1">LGI1 [Faciobrachial dystonic seizures]</span></b>
+            </label>
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option3" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option3" (click)="test4_col1_check3(test4_col1_option3?'0':'1')"><b><span class="label_class1">CASPR 2 [Morvan syndrome]</span></b>
+            </label>
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option4" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option4" (click)="test4_col1_check4(test4_col1_option4?'0':'1')"><b><span class="label_class1">AMPA/GABA [seizures, refractory status]</span></b>
+            </label>
+
+            <!-- <label class="radio-inline" style="margin-left:0px;">
+              <input type="checkbox" name="group5" (click)="test4_col1_check5()"><b>DPPX [Myoclonus, hyperplexia, diarrhoea, seizures]</b>
+            </label> -->
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option5" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option5" (click)="test4_col1_check5(test4_col1_option5?'0':'1')"><b><span class="label_class1">IgLON 5 [REM NREM parasomnia]</span></b>
+            </label>
+
+            <label class="radio-inline check_class"style="margin-left:0px;width:100%;" >
+              <input type="checkbox" name="group5" [(ngModel)]="test4_col1_option6" [ngModelOptions]="{standalone: true}" [checked] = "test4_col1_option6" (click)="test4_col1_check6(test4_col1_option6?'0':'1')" ><b><span class="label_class1">If none of the above, specify</span></b>
+              <textarea  type="text" [(ngModel)]="test4_col1_option6_text" [ngModelOptions]="{standalone: true}" (input)="test4OthersText1($event.target.value)" class="w3-input w3-border" [hidden]="!(others4)"></textarea>
+            </label>
+            
+            </div>
+
+          
+          <div class="col-md-4">
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>Known Malignancy<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" value="1" name="test4_col2_radio1" [(ngModel)]="test4_col2_radio1" [ngModelOptions]="{standalone: true}"  (click)="test4_col2_radiobutton1()"><b>Yes</b><br>
+              
+            </label>  <br>
+
+            <label class="radio-inline" style="width:100%;">
+              <input type="radio" value="2" name="test4_col2_radio1" [(ngModel)]="test4_col2_radio1" [ngModelOptions]="{standalone: true}" (click)="test4_col2_radiobutton2()"><b>No</b>
+            </label><br>
+            <textarea  [(ngModel)]="test4_yes_text" [ngModelOptions]="{standalone: true}" type="text" class="w3-input w3-border" (input)="test4OthersText2($event.target.value)" [hidden]="!(site1)"></textarea>
+
+
+            
+          </div>
+          <div class="col-md-4">
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>. Current Clinical Status<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" value="1" name="test4_col3_radio1" [(ngModel)]="test4_col3_radio1" [ngModelOptions]="{standalone: true}"  (click)="test4_col3_radiobutton1()"><b>Symptomatic</b><br>
+              
+            </label>  <br>
+
+            <label class="radio-inline">
+              <input type="radio" value="2" name="test4_col3_radio1" [(ngModel)]="test4_col3_radio1" [ngModelOptions]="{standalone: true}" (click)="test4_col3_radiobutton2()"><b>Remission</b>
+            </label><br>
+          
+          </div>
+        </div>
+       
+        <input type="checkbox" class="example-margin" [(ngModel)]="test5" [ngModelOptions]="{standalone: true}" [checked]="test5" (click)="test_new5(test5?'0':'1')" /><b> 5) Paraneoplastic Neuronal Antibodies (Amphiphysin, CV2, PNMA2 (Ma2/Ta), Ri, Yo, Hu,GAD, Titin, Recoverin, SOX1, Zic4, Tr)</b><span [hidden]="!(check5)"><input type="checkbox" class="example-margin" [(ngModel)]="test5_serum" [ngModelOptions]="{standalone: true}" [checked]="test5_serum" disabled=true style="margin-left:20px;"   /><b><span class="label_class1">Serum</span></b></span>
+        <br>
+
+         <div class="col-md-12" [hidden]="!(test5)">
+           <br> 
+          <div class="col-md-4">
+
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>Clinical Syndrome<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" name="group8" value="1" name="test5_col1" [(ngModel)]="test5_col1" [ngModelOptions]="{standalone: true}" (click)="test5_col1_radiobutton1()"><b>CNS</b>
+            </label><br>
+
+            <div [hidden]="!cns_checked">
+              <br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8a" [(ngModel)]="test5_cns_option1" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option1" (click)="test5_col1_set1_check1(test5_cns_option1?'0':'1')"><b><span class="label_class1">Cerebellar degeneration</span></b>
+            </label><br>
+
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8b"  [(ngModel)]="test5_cns_option2" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option2" (click)="test5_col1_set1_check2(test5_cns_option2?'0':'1')"><b><span class="label_class1">Brain stem encephalomyelitis</span></b>
+            </label><br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option3" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option3"  (click)="test5_col1_set1_check3(test5_cns_option3?'0':'1')"><b><span class="label_class1">Stiff person syndrome</span></b>
+            </label><br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option4" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option4" (click)="test5_col1_set1_check4(test5_cns_option4?'0':'1')"><b><span class="label_class1">PERM</span></b>
+            </label><br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option5" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option5" (click)="test5_col1_set1_check5(test5_cns_option5?'0':'1')"><b><span class="label_class1">Opsoclonus-myoclonus</span></b>
+            </label><br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8c" [(ngModel)]="test5_cns_option6" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option6"  (click)="test5_col1_set1_check6(test5_cns_option6?'0':'1')"><b><span class="label_class1">Opsoclonus-ataxia</span></b>
+            </label><br>
+            <label class="radio-inline check_class">
+              <input type="checkbox" name="group8c"  [(ngModel)]="test5_cns_option7" [ngModelOptions]="{standalone: true}" [checked] = "test5_cns_option7" (click)="test5_col1_set1_check7(test5_cns_option7?'0':'1')"><b><span class="label_class1">Retinal degeneration</span></b>
+            </label><br><br>
+          </div>
+            <label class="radio-inline ">
+              <input type="radio" name="group8" value="2" name="test5_col1" [(ngModel)]="test5_col1" [ngModelOptions]="{standalone: true}" (click)="test5_col1_radiobutton2()"><b>PNS</b>
+            </label><br>
+
+            <div [hidden]="!pns_checked">
+              <br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8b" [(ngModel)]="test5_pns_option1" [ngModelOptions]="{standalone: true}" [checked] = "test5_pns_option1" (click)="test5_col1_set2_check1(test5_pns_option1?'0':'1')"><b><span class="label_class1">sensory neuronopathy</span></b>
+              </label><br>
+  
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8b"  [(ngModel)]="test5_pns_option2" [ngModelOptions]="{standalone: true}" [checked] = "test5_pns_option2" (click)="test5_col1_set2_check2(test5_pns_option2?'0':'1')"><b><span class="label_class1">sensorimotor neuropathy</span></b>
+              </label><br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8c" [(ngModel)]="test5_pns_option3" [ngModelOptions]="{standalone: true}" [checked] = "test5_pns_option3" (click)="test5_col1_set2_check3(test5_pns_option3?'0':'1')"><b><span class="label_class1">autonomic neuropathy</span></b>
+              </label><br><br>
+             
+            </div>
+
+            <label class="radio-inline">
+              <input type="radio" name="group8" value="3" name="test5_col1" [(ngModel)]="test5_col1" [ngModelOptions]="{standalone: true}" (click)="test5_col1_radiobutton3()"><b>NMJ</b>
+            </label><br>
+            <div [hidden]="!nmj_checked">
+              <br>
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8b" [(ngModel)]="test5_nmj_option1" [ngModelOptions]="{standalone: true}" [checked] = "test5_nmj_option1"  (click)="test5_col1_set3_check1(test5_nmj_option1?'0':'1')"><b><span class="label_class1">LEMS</span></b>
+              </label><br>
+  
+              <label class="radio-inline check_class">
+                <input type="checkbox" name="group8b" [(ngModel)]="test5_nmj_option2" [ngModelOptions]="{standalone: true}" [checked] = "test5_nmj_option2" (click)="test5_col1_set3_check2(test5_nmj_option2?'0':'1')"><b><span class="label_class1">Myasthenia</span></b>
+              </label><br><br>
+              
+             
+            </div>
+           
+
+            <label class="radio-inline" style="width:100%;">
+              <input type="radio" name="group8" value="4" name="test5_col1" [(ngModel)]="test5_col1"  [ngModelOptions]="{standalone: true}" (click)="test5_col1_radiobutton4()" ><b>If none of the above, specify</b>
+            </label>
+              <textarea  type="text" class="w3-input w3-border" [(ngModel)]="test5_others_text" [ngModelOptions]="{standalone: true}" [hidden]="!(others5)" (input)="test5OthersText1($event.target.value)"></textarea>
+           
+            
+            </div>
+
+          
+          <div class="col-md-4">
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>Known Malignancy<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" value="1" name="test5_col2_radio1" [(ngModel)]="test5_col2_radio1" [ngModelOptions]="{standalone: true}"  (click)="test5_col2_radiobutton1()"><b>Yes</b><br>
+              
+            </label><br>
+
+            <label class="radio-inline">
+              <input type="radio" value="2" name="test5_col2_radio1" [(ngModel)]="test5_col2_radio1" [ngModelOptions]="{standalone: true}" (click)="test5_col2_radiobutton2()"><b>No</b>
+            </label><br>
+            <textarea [(ngModel)]="test5_yes_text" [ngModelOptions]="{standalone: true}" type="text" class="w3-input w3-border" [hidden]="!(site2)" (input)="test5YesText1($event.target.value)"></textarea>
+
+
+            
+          </div>
+          <div class="col-md-4">
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>Current Clinical Status<span style="color:red;">*</span></b></label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" value="1" name="test5_col3_radio1" [(ngModel)]="test5_col3_radio1" [ngModelOptions]="{standalone: true}"  (click)="test5_col3_radiobutton1()"><b>Symptomatic</b><br>
+              
+            </label><br>
+
+            <label class="radio-inline">
+              <input type="radio" value="2" name="test5_col3_radio1" [(ngModel)]="test5_col3_radio1" [ngModelOptions]="{standalone: true}" (click)="test5_col3_radiobutton2()"><b>Remission</b>
+            </label><br>
+          
+          </div>
+        </div>
+
+        
+
+        <input type="checkbox" class="example-margin" [(ngModel)]="test6" [ngModelOptions]="{standalone: true}" [checked]="test6" (click)="test_new6(test6?'0':'1')" /><b> 6) Myositis Profile (immunoblot): (Mi-2α, Mi-2β, TIF1, MDA5, NXP2, SAE1, Ku, PM-Scl100, PM-Scl75, Jo-1, SRP, PL-7, PL-12, EJ, OJ and Ro-52)</b><span [hidden]="!(check6)"><input type="checkbox" class="example-margin" [(ngModel)]="test6_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  [checked]="test6_serum"  disabled=true /><b><span class="label_class1">Serum</span></b></span>
+        <br>
+
+        <input type="checkbox" class="example-margin" [(ngModel)]="test7" [ngModelOptions]="{standalone: true}" [checked]="test7" (click)="test_new7(test7?'0':'1')" /><b> 7) Anti-Ganglioside Profile (IgG). (GM1, GM2, GM3, GD1a, GD1b, GT1b, GQ1b) (Immunoblot)</b>
+        <span [hidden]="!(check7)"><input type="checkbox" class="example-margin" [(ngModel)]="test7_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  [checked]="test7_serum" disabled=true /><b><span class="label_class1">Serum</span></b></span>
+        <br>
+
+        <input type="checkbox" class="example-margin" [(ngModel)]="test8" [ngModelOptions]="{standalone: true}" [checked]="test8" (click)="test_new8(test8?'0':'1')" /><b> 8) Anti-Ganglioside Profile (IgM). (GM1, GM2, GM3, GD1a, GD1b, GT1b, GQ1b) (Immunoblot)</b>
+        <span [hidden]="!(check8)"><input type="checkbox" class="example-margin" [(ngModel)]="test8_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  [checked]="test8_serum" disabled=true /><b><span class="label_class1">Serum</span></b></span>
+        <br>
+
+        <input type="checkbox" class="example-margin" [(ngModel)]="test9" [ngModelOptions]="{standalone: true}" [checked]="test9" (click)="test_new9(test9?'0':'1')" /><b> 9) Anti-DPPX </b>
+        <span [hidden]="!(check9)"><input type="checkbox" class="example-margin" [(ngModel)]="test9_serum" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  [checked]="test9_serum" disabled=true /><b><span class="label_class1">Serum</span></b>
+          <!-- <input type="checkbox" class="example-margin" [(ngModel)]="test9_csf" [ngModelOptions]="{standalone: true}" style="margin-left:20px;"  (click) = "test9_new_csf(test9_csf?'0':'1')" /><b>CSF</b> -->
+        </span>
+        <br>
+        <div class="col-md-12" [hidden]="!(test9)"> 
+          <br>
+          <div class="col-md-4">
+
+            <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>Clinical syndrome </b></label>
+            <br> 
+           
+             <label class="radio-inline" style="margin-left:0px;"><b>DPPX</b>
+              <!-- <input type="radio" name="group5" (click)="test4_col1_radiobutton5()"><b>DPPX</b> -->
+            </label><br> <br>
+
+          
+            <!-- <label class="radio-inline"  style="margin-left:0px;">
+              <input type="checkbox " name="group5" (click)="test4_col1_radiobutton5()"><b>Myoclonus</b> 
+            </label><br>  -->
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option1" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option1"  (click)="test9_col1_checkbox1(test9_col1_option1?'0':'1')"><b><span class="label_class1">Myoclonus</span></b>
+            </label><br>
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option2" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option2" (click)="test9_col1_checkbox2(test9_col1_option2?'0':'1')"><b><span class="label_class1">Hyperplexia</span></b>
+            </label><br> 
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option3" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option3" (click)="test9_col1_checkbox3(test9_col1_option3?'0':'1')"><b><span class="label_class1">Diarrhoea</span></b>
+            </label><br> 
+
+            <label class="radio-inline check_class" style="margin-left:0px;">
+              <input type="checkbox" name="group5" [(ngModel)]="test9_col1_option4" [ngModelOptions]="{standalone: true}" [checked] = "test9_col1_option4" (click)="test9_col1_checkbox4(test9_col1_option4?'0':'1')"><b><span class="label_class1">Seizures</span></b>
+            </label>
+            
+            </div>
+
+          
+          <div class="col-md-4">
+            
+            
+          </div>
+          <div class="col-md-4">
+          
+          </div>
+        </div>
+         
+      
+      </section>
+  
+
+</div>
+
+<div class="clear"></div>
+
+<div class="col-md-12" style="margin-top:10px;">
+  <div class="col-md-12">
+  <label class="w3-text-blue"><i class="fa fa-money" aria-hidden="true"></i><b> Payment Mode and Details</b><span style="color:red;">*</span></label>
+  
+</div>
+</div>
+
+<div class="col-md-12" style="margin-top:10px;">
+  <div class="col-md-4">
+ 
+    <div class="panel-body panel panel-default fixed-bottom" style="text-align:left;margin-top:20px;padding:10px; ">
+            
+  <label class="radio-inline">
+    <input type="radio" name="optradio" (click)="toggle1()" id="radio1"  [checked]="isChecked1">DD 
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="optradio" (click)="toggle2()" id="radio2" [checked]="isChecked2">Online Transaction
+  </label>
+
+  <label class="radio-inline">
+    <input type="radio" name="optradio" (click)="toggle3()" id="radio3" [checked]="isChecked3">Cash Payment
+  </label>
+  </div>
+  
+</div>
+<div class="col-md-4">
+
+  <label class="w3-text-blue" for="au_dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>DD No.</b></label>
+
+<input 
+  type="text" required
+  
+  formControlName="au_dd_no" 
+  placeholder="Enter DD Number" title="DD Number"
+  class="w3-input w3-border"  [(ngModel)]="dd_obj.au_dd_no" (keypress)="keyPress1($event)">
+</div>
+
+<div class="col-md-4">
+
+  <label class="w3-text-blue" for="au_trans_no"><i class="fa fa-history" aria-hidden="true"></i><b>Online Transaction No.</b></label>
+
+<input 
+  type="text" required
+  formControlName="au_trans_no" 
+   
+  placeholder="Enter Online Transaction Number" title="Online Transaction Number"
+  class="w3-input w3-border"  [(ngModel)]="dd_obj.au_trans_no" (keypress)="keyPress2($event)">
+</div>
+
+
+    
+</div>
+
+<div class="col-md-12" style="margin-top:10px;">
+<div class="col-md-4">
+<label class="w3-text-blue" for="au_bank_name"><i class="fa fa-history" aria-hidden="true"></i><b>Bank Name</b></label>
+
+    <input 
+      type="text" required
+     
+      formControlName="au_bank_name" 
+      placeholder="Enter Bank Name" title="Bank Name"
+      class="w3-input w3-border" [(ngModel)]="dd_obj.au_bank_name">
+</div>
+<div class="col-md-4">
+<label class="w3-text-blue" for="au_date_of_dd"><i class="fa fa-history" aria-hidden="true"></i><b>Date Of DD/Online Transaction.</b></label>
+
+<!-- <input 
+type="text" required
+
+formControlName="au_date_of_dd"
+placeholder="Enter Date "
+class="w3-input w3-border" [(ngModel)]="dd_obj.au_date_of_dd"> -->
+
+<my-date-picker name="mydate" formControlName="au_date_of_dd" [options]="myDatePickerOptions" [(ngModel)]="dd_obj.au_date_of_dd" required></my-date-picker>
+
+<!-- <div *ngIf=" form.get('au_date_of_dd').touched && form.get('au_date_of_dd').invalid" class="w3-panel w3-red w3-round-xlarge">
+  <div *ngIf=" form.get('au_date_of_dd').hasError('required')">
+   Date is required
+  </div>
+  </div> -->
+</div>
+<div class="col-md-4">
+<label class="w3-text-blue" for="au_amount"><i class="fa fa-money" aria-hidden="true"></i><b> Amount</b></label>
+
+<input 
+type="text" formControlName="au_amount" [(ngModel)]="Test_total_amount"
+placeholder="Rs." 
+class="w3-input w3-border" disabled=true>
+
+
+
+</div>
+
+
+</div>
+
+<div class="col-md-12" style="margin-top:10px;">
+                  
+  <div class="col-md-12">
+      <div class="w3-text-blue">
+        <label for="file"><i class="fa fa-file-image-o" aria-hidden="true"></i><b> Upload Transactions Details Photo<span style="color:red;" [hidden]="!(dd_obj.au_trans_no || dd_obj.au_dd_no)">*</span></b></label>
+        <input type="file" id="file"  multiple (change)="onFileSelected($event)" class="w3-input w3-border" accept="image/*" style="height: 100%">
+        
+      </div>
+    </div>
+
+</div>
+
+<div class="col-md-12" style="margin-top:10px;">
+                  
+  <div class="col-md-12">
+      <div class="w3-text-blue">
+        <label for="au_remarks"><i class="fa fa-file-image-o" aria-hidden="true"></i><b>Remarks</b></label>
+        <textarea type="text" style="color:black;" formControlName="au_remarks"  class="w3-input w3-border" title="Remarks"></textarea>
+        
+      </div>
+    </div>
+
+</div>
+
+<!-- <div class="col-md-12" style="text-align:right;margin-top:50px;">
+  <label class="w3-text-blue" > Signature + contact No.</label><br>
+  
+</div> -->
+
+<div class="col-md-12" style="text-align:right;margin-top:30px;">
+  <label class="w3-text-blue"  style="text-align:justify;"> Please note: Samples will be preserved for upto 2 weeks after testing and then discarded. Any requests for review of report should be made within 48hrs and retesting within 2 weeks (additional charges for retesting apply)</label><br>
+  
+</div>
+
+<div class="col-md-12" style="text-align:left;margin-top:30px;">
+  <label class="w3-text-blue" style="text-align:justify;"> <span style="color:black;">E-mail:</span> autoimmuneneurologylab@gmail.com/mahadevananita@gmail.com</label><br>
+  <label class="w3-text-blue"  style="text-align:justify;"> <span style="color:black;">Tel: </span>080-26995094</label><br>
+  
+</div>
+
+
+<div class="container" style="text-align:center;">
+  <button type="submit" style="margin-top:30px;margin-bottom:20px;" name="button"   class="w3-btn w3-blue"><span *ngIf="index == undefined">Add Sample  </span><span *ngIf="index != undefined">Update Sample  </span>  <i class="w3-medium fa fa-check"></i></button>
+</div>
+        </form>
+
+       
+    </div>
+    </div>

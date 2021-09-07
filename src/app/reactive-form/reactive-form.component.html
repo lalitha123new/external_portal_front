@@ -1,0 +1,734 @@
+
+
+<div class="col-md-12" style="padding:0px;margin-top:0px;"> 
+    <div class="w3-panel w3-round-small w3-teal" style="padding-top:0px;margin-top:0px;">
+          <h3><span *ngIf="index == undefined">Patient Registration</span><span *ngIf="index != undefined">Patient Updation</span>
+            <!-- <a routerLink="/dashboard/testlist" class="w3-button w3-green custom-button" style="float:right;"><i class="w3-medium fa fa-chevron-left"> Back</i></a> -->
+          </h3>
+        </div>
+</div>
+
+<div  id="section1_" class="w3-container">
+
+<div style="border:1px solid black;background-color: #f2f2f2;margin-top:50px;">
+
+    <form class="w3-container w3-animate-left" *ngIf="form" novalidate [formGroup]="form" (ngSubmit)="addPatient()">
+       
+        <div class="col-md-12" style="padding-top:20px;">
+
+            <div class="col-md-4">
+              
+            <div class="form-group">
+              <label class="w3-text-blue" for="pat_name"><i class="w3-medium custom-icon fa fa-user"></i><b> Name<span style="color:red;">*</span></b></label>
+              <input type="text" 
+              formControlName="pat_name" 
+              placeholder="Enter Name"
+              class="w3-input w3-border" title="Name of patient">
+
+              <div *ngIf="form.get('pat_name').change && form.get('pat_name').invalid" class="w3-panel w3-red w3-round-xlarge">
+
+
+                
+
+
+
+               
+                <div *ngIf=" form.get('pat_name').hasError('required')">
+                    Name is required
+                </div>
+                
+                
+  
+                </div>
+            </div>
+
+          </div>
+
+          
+    
+          <div class="col-md-1">
+              <div class="form_group" >
+                  <label class="w3-text-blue" for="pat_age"><i class="w3-medium custom-icon fa fa-user"></i><b> Age<span style="color:red;">*</span>Y(s)</b></label>
+                  
+                  <input type="text" 
+                  formControlName="pat_age" 
+                  placeholder="Years"
+                  class="w3-input w3-border" title="Age of patient">
+                  
+                  <div *ngIf=" form.get('pat_age').touched && form.get('pat_age').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('pat_age').hasError('required')">
+                        Year is required
+                    </div>
+                    
+      
+                    </div>
+            
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form_group" >
+                  <label class="w3-text-blue" for="pat_age"><b>M(s)</b></label>
+                  
+                  <input type="text" 
+                  formControlName="pat_age_months" 
+                  placeholder="Months"
+                  class="w3-input w3-border" >
+                  
+                 
+            
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form_group" >
+                  <label class="w3-text-blue" for="pat_age"><b> D(s)</b></label>
+                  
+                  <input type="text" 
+                  formControlName="pat_age_days" 
+                  placeholder="Days" 
+                  class="w3-input w3-border" >
+                  
+                 
+            
+              </div>
+            </div>
+            <!-- <div class="col-md-1">
+              <div class="form_group" >
+                  <label class="w3-text-blue" for="pat_age"></label>
+                  
+                  <input type="text" 
+                  formControlName="pat_age" 
+                  placeholder="Months"
+                  class="w3-input w3-border" >
+                  
+                  <div *ngIf=" form.get('pat_age').touched && form.get('pat_age').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('pat_age').hasError('required')">
+                        Age is required
+                    </div>
+                    
+      
+                    </div>
+            
+              </div>
+            </div> -->
+            <!-- <div class="col-md-1">
+              <div class="form_group" >
+                  <label class="w3-text-blue" for="pat_age"></label>
+                  
+                  <input type="text" 
+                  formControlName="pat_age" 
+                  placeholder="Days"
+                  class="w3-input w3-border" >
+                  
+                  <div *ngIf=" form.get('pat_age').touched && form.get('pat_age').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('pat_age').hasError('required')">
+                        Age is required
+                    </div>
+                    
+      
+                    </div>
+            
+              </div>
+            </div> -->
+
+            <div class="col-md-3">
+        
+              <div class="w3-text-blue" style="text-align:center;">
+                 <label for="pat_gender" style="text-align:center;"><i class="fa fa-venus-mars" aria-hidden="true"></i>
+                  <b> Gender<span style="color:red;">*</span></b><br>
+               
+                 
+                <input type="radio" value="Male" formControlName="pat_gender" class="w3-radio w3-round-small" style="margin-left:30px;"><label style="padding-right:10px;">M</label>
+                <input type="radio" value="Female" formControlName="pat_gender" class="w3-radio"><label style="padding-right:10px;">F</label>
+                 <input type="radio" value="Other" formControlName="pat_gender" class="w3-radio"><label style="padding-right:10px;">O</label>
+                </label>
+                 <div *ngIf=" form.get('pat_gender').touched && form.get('pat_gender').invalid" class="w3-panel w3-red w3-round-xlarge">
+                  <div *ngIf=" form.get('pat_gender').hasError('required')">
+                      Gender is required
+                  </div>
+                  </div>
+                 </div> 
+           </div> 
+
+           <div class="col-md-2">
+        
+            <div class="form-group">
+              <label class="w3-text-blue"  for="hosp_ref_no"><i class="w3-medium custom-icon fa fa-hospital-o"></i><b> Referring Hosp.Patient Id<span style="color:red;">*</span></b></label>
+              <input type="text" 
+              formControlName="hosp_ref_no"
+              placeholder="Enter Patient registration number"
+              class="w3-input w3-border" title="Patient registration number in your hospital for cross reference">
+              <div *ngIf=" form.get('hosp_ref_no').touched && form.get('hosp_ref_no').invalid" class="w3-panel w3-red w3-round-xlarge">
+                <div *ngIf=" form.get('hosp_ref_no').hasError('required')">
+                    Referring Hosptial Patient Id is required
+                </div>
+                </div>
+            </div>
+         </div> 
+
+          
+</div>
+
+<div class="clear"></div>
+
+            <div class="col-md-12">
+   
+        
+              <div class="col-md-4">
+                <label class="w3-text-blue" for="referred_by"><i class="fa fa-user-md" aria-hidden="true"></i><b> Referred By<span style="color:red;">*</span></b></label>
+                  
+                  <input type="text" 
+                  formControlName="referred_by"
+                  placeholder="Enter Consultant Name" 
+                  class="w3-input w3-border" title="Name of consultant">
+                  <div *ngIf=" form.get('referred_by').touched && form.get('referred_by').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('referred_by').hasError('required')">
+                        Referred by is required
+                    </div>
+                    </div>
+    
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+              <label class="w3-text-blue" for="doctor_phone_no"><i class="fa fa-phone" aria-hidden="true"></i><b> Consultant Mobile Number<span style="color:red;">*</span></b></label>
+                    
+                     <input type="number" 
+                     formControlName="doctor_phone_no"
+                     placeholder="Enter Phone Number" 
+                     class="w3-input w3-border" title="Mobile number of consultant">
+
+                     <div *ngIf=" form.get('doctor_phone_no').touched && form.get('doctor_phone_no').invalid" class="w3-panel w3-red w3-round-xlarge">
+                      <div *ngIf=" form.get('doctor_phone_no').hasError('required')">
+                         Consultant mobile number is required
+                      </div>
+                      </div>
+                     
+                    </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+              <div class="form-group">
+                <label class="w3-text-blue" for="doctor_email_id"><i class="fa fa-envelope" aria-hidden="true"></i><b> Consultant E-mail Address<span style="color:red;">*</span></b></label>
+                       
+                    <input type="email" 
+                    formControlName="doctor_email_id"
+                    placeholder="Enter E-mail Address" title="E-mail address of consultant"
+                    class="w3-input w3-border" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                    <div *ngIf=" form.get('doctor_email_id').touched && form.get('doctor_email_id').invalid" class="w3-panel w3-red w3-round-xlarge">
+                      <div *ngIf=" form.get('doctor_email_id').hasError('required')">
+                         Consultant e-mail address is required
+                      </div>
+                     <div *ngIf=" form.get('doctor_email_id').hasError('pattern')">
+                       Invalid e-mail address
+                      </div>
+                      </div>
+                    
+                  </div>   
+            </div>
+
+        </div>
+
+            <div class="col-md-12" style="padding-top:10px;">
+
+             <div class="col-md-4">
+              <div class="form-group">
+              <label class="w3-text-blue" for="pat_phno"><i class="fa fa-phone" aria-hidden="true"></i><b>Patient Mobile Number<span style="color:red;">*</span></b></label>
+                    
+                     <input type="number" 
+                     formControlName="pat_phno"
+                     placeholder="Enter Phone Number" 
+                     class="w3-input w3-border" title="Mobile number of patient">
+                     <div *ngIf=" form.get('pat_phno').touched && form.get('pat_phno').invalid" class="w3-panel w3-red w3-round-xlarge">
+                      <div *ngIf=" form.get('pat_phno').hasError('required')">
+                         Patient mobile number is required
+                      </div>
+                      </div>
+                     
+                    </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+              <div class="form-group">
+                <label class="w3-text-blue" for="pat_email"><i class="fa fa-envelope" aria-hidden="true"></i><b>Patient E-mail Address<span style="color:red;"></span></b></label>
+                       
+                       
+                       <input type="email" 
+                       formControlName="pat_email"
+                       placeholder="Enter E-mail Address" title="E-mail address of patient"
+                       class="w3-input w3-border" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                       
+                       <div *ngIf=" form.get('pat_email').touched && form.get('pat_email').invalid" class="w3-panel w3-red w3-round-xlarge">
+                        <div *ngIf=" form.get('pat_email').hasError('required')">
+                           Patient e-mail address is required
+                        </div>
+                        <div *ngIf=" form.get('pat_email').hasError('pattern')">
+                          Invalid e-mail address
+                         </div>
+                        </div>
+                      </div>
+
+                     
+            </div>
+
+            <div class="col-md-4">
+        
+              <div class="form-group">
+                <label class="w3-text-blue" for="hosp_address"><i class="w3-medium custom-icon fa fa-hospital-o"></i><b> Hosp.Address</b></label>
+                <input type="text" 
+                [(ngModel)]="hosp_address" [ngModelOptions]="{standalone: true}"
+                
+                class="w3-input w3-border" disabled=true>
+              </div>
+           </div> 
+            
+            </div>
+
+
+              <div class="clear"></div>
+
+                <div class="row">
+                  <div class="col-md-12" style="text-align:center;">
+                    <h4 class="w3-text-blue" id="inform_label">Click on <span><i class="w3-medium  fa fa-check"></i></span> to confirm</h4>
+                  </div>
+                </div>
+                
+                <div class="clear"></div>
+                
+                
+                <!-- begin new code with specimen,sample_type,fixative,sample_quantity -->
+                <div class="col-md-12" style="margin-top:10px;">
+
+                <div class="col-md-12">
+
+                <table class="table-responsive" style="width:100%;">
+
+                  <tbody>
+
+                      <tr class="noBorder" *ngFor="let presc of sampleArray; let i = index">
+                          <td width="15%;" class="td_class">
+                              <input disabled [(ngModel)]="presc.specimen" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.specimen}}">
+                          </td>
+                          <td width="20%" class="td_class">
+                              <input disabled [(ngModel)]="presc.sample_type"  class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_type}}">
+                          </td>
+                          <td width="15%" class="td_class">
+                            <input disabled [(ngModel)]="presc.sample_site" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_site}}">
+                        </td>
+                          <td width="10%" class="td_class">
+                              <input disabled [(ngModel)]="presc.fixative"  class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.fixative}}">
+                          </td>
+                          <td width="15%" class="td_class">
+                            <input disabled [(ngModel)]="presc.ref_no"  class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.ref_no}}">
+                        </td>
+                          <td width="10%">
+                                  <input disabled [(ngModel)]="presc.sample_quantity" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity}}">
+                          </td>
+
+                          <td width="10%" [hidden]="!(presc.specimen==='Blocks and slides')">
+                            <input disabled [(ngModel)]="presc.sample_quantity1" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity1}}">
+                    </td>
+
+                          <!-- <td width="10%" [hidden]="!(presc.specimen ==='Blocks')">
+                            <input disabled [(ngModel)]="presc.sample_quantity1" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity1}}">
+                          </td>
+
+                          <td width="10%" [hidden]="!(presc.specimen ==='Slides for Opinion')">
+                            <input disabled [(ngModel)]="presc.sample_quantity2" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity2}}">
+                          </td>
+                          <td width="10%" [hidden]="!(presc.specimen ==='Blocks and slides')">
+                            <input disabled [(ngModel)]="presc.sample_quantity3" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity3}}">
+                          </td>
+
+                          <td width="10%" [hidden]="!(presc.specimen ==='Blocks and slides')">
+                            <input disabled [(ngModel)]="presc.sample_quantity4" class="form-control" [ngModelOptions]="{standalone: true}" type="text" name="{{presc.sample_quantity4}}">
+                          </td> -->
+                         
+                          <td width="5%">
+                              <button class="w3-button w3-green custom-button"   title="Click to remove this row" type="button" (click)="deleteNewSample(i)" style="border-radius: 50%;margin-top:20px;"><i class="w3-medium  fa fa-window-close"></i>   
+                              
+                              </button>
+                          </td>
+                      </tr>
+
+                      <tr class="noBorder">
+                          <td width="15%" class="td_class">
+                            <label class="w3-text-blue" for="specimen"><i class="fa fa-cube" ></i><b> Specimen<span style="color:red;">*</span></b></label>
+                            <select  [(ngModel)]="newSample.specimen" name="specimen" [ngModelOptions]="{standalone: true}"
+                                      class="w3-input w3-border" (ngModelChange)="mychange1($event)" aria-placeholder="jjj">
+                                         
+                                          <option [ngValue]="undefined" disabled  selected > Select </option>
+                                          <option *ngFor="let dist of distinct">{{dist}}</option>
+                                          
+                                      </select>
+                          </td>
+                          <td  width="20%" class="td_class">
+                            <label class="w3-text-blue " for="sample_type"><span [hidden]="((newSample.specimen === 'Blocks') || (newSample.specimen === 'Slides for Opinion') || (newSample.specimen === 'Blocks and slides'))"><i class="w3-medium custom-icon fa fa-cube"></i><b>Test<span style="color:red;">*</span></b></span></label>
+                            
+
+                                    <select  [(ngModel)]="newSample.sample_type"  name="sample_type" [ngModelOptions]="{standalone: true}"
+                                      class="w3-input w3-border" (ngModelChange)="mychange2($event)"  [disabled]="(newSample.specimen ==='Blocks') || (newSample.specimen ==='Slides for Opinion') || (newSample.specimen ==='Blocks and slides')">
+                                          <option [ngValue]="undefined" disabled  selected> Select </option>
+
+                                          <option *ngFor="let biopsy of temp_array1">{{biopsy}}</option>
+                                        
+
+                                              </select>
+                          </td>
+
+                          <td  width="15%" class="td_class">
+                      <label class="w3-text-blue " for="sample_site"><i class="w3-medium custom-icon fa fa-cube"></i><b>Biopsy Site<span style="color:red;">*</span></b></label>
+                            
+
+            
+                                      <input  class="w3-input w3-border" [(ngModel)]="newSample.sample_site" [ngModelOptions]="{standalone: true}"  name="sample_site" [value]="undefined">
+                          </td>
+                          
+                          <td  width="15%" class="td_class">
+                            <label class="w3-text-blue" for="fixative"><span [hidden]="((newSample.specimen === 'Slides for Opinion') || (newSample.specimen === 'Blocks') || (newSample.specimen === 'Blocks and slides') || (newSample.sample_type === 'Tumor+intraoperative squash/frozen'))"><i class="fa fa-cube" ></i><b> Fixative<span style="color:red;">*</span></b></span></label>
+                            <select  [(ngModel)]="newSample.fixative"  name="fixative" [ngModelOptions]="{standalone: true}"
+                                      class="w3-input w3-border" (ngModelChange)="mychange3($event)" [disabled]="((newSample.specimen ==='Slides for Opinion') || (newSample.specimen ==='Blocks') || (newSample.specimen ==='Blocks and slides') || (newSample.sample_type === 'Tumor+intraoperative squash/frozen'))">
+                                        
+
+                                          <option [ngValue]="undefined" disabled selected ><span [hidden]="((newSample.specimen === 'Slides for Opinion') || (newSample.specimen === 'Blocks') || (newSample.specimen === 'Blocks and slides'))">Select</span>  </option>
+                                          <option *ngFor="let fix of temp_array2">{{fix}}</option>
+                                         
+
+
+                                          
+                                      </select>
+                          </td>
+
+                          <td  width="15%">
+                            <label class="w3-text-blue" for="ref_no"><b><span [hidden]="!(newSample.specimen === 'Blocks')"><i class="fa fa-newspaper-o" ></i>Block Ref.Number<span style="color:red;">*</span></span><span [hidden]="!(newSample.specimen === 'Slides for Opinion')"><i class="fa fa-newspaper-o" ></i>Slide Ref.Number<span style="color:red;">*</span></span><span [hidden]="!(newSample.specimen === 'Blocks and slides')"><i class="fa fa-newspaper-o" ></i>Ref nos of blocks & slides<span style="color:red;">*</span></span><span [hidden]="((newSample.specimen === 'Blocks and slides') || (newSample.specimen === 'Blocks') || (newSample.specimen === 'Slides for Opinion'))"></span> </b></label>
+                            <input type="text" 
+                            [(ngModel)]="newSample.ref_no" name="ref_no" [ngModelOptions]="{standalone: true}"
+                            placeholder="" 
+                            class="w3-input w3-border" [disabled]="!((newSample.specimen ==='Blocks') || (newSample.specimen ==='Slides for Opinion') || (newSample.specimen ==='Blocks and slides'))"> 
+                          </td>
+
+
+
+                          <td  width="10%" [hidden]="((newSample.specimen ==='Blocks') || (newSample.specimen ==='Slides for Opinion') || (newSample.specimen ==='Blocks and slides'))">
+                            <label class="w3-text-blue" for="sample_quantity"><i class="fa fa-newspaper-o" ></i><b> No. of Bottles<span style="color:red;">*</span></b></label>
+                            <input type="number" 
+                            [(ngModel)]="newSample.sample_quantity" name="sample_quantity" [ngModelOptions]="{standalone: true}"
+                            placeholder="Enter Quantity" 
+                            class="w3-input w3-border"> 
+                          </td>
+
+                          <td  width="10%" width="10%" [hidden]="!(newSample.specimen ==='Blocks')">
+                            <label class="w3-text-blue" for="quantity1"><i class="fa fa-newspaper-o" ></i><b> No. of Blocks<span style="color:red;">*</span></b></label>
+                            <input type="number" 
+                            [(ngModel)]="quantity1" name="quantity1" [ngModelOptions]="{standalone: true}"
+                            placeholder="Enter Quantity" 
+                            class="w3-input w3-border"> 
+                          </td>
+                          <td  width="10%" width="10%" [hidden]="!(newSample.specimen ==='Slides for Opinion')">
+                            <label class="w3-text-blue" for="quantity2"><i class="fa fa-newspaper-o" ></i><b> No. of Slides<span style="color:red;">*</span></b></label>
+                            <input type="number" 
+                            [(ngModel)]="quantity2" name="quantity2" [ngModelOptions]="{standalone: true}"
+                            placeholder="Enter Quantity" 
+                            class="w3-input w3-border"> 
+                          </td>
+
+                          <td  width="10%" width="10%" [hidden]="!(newSample.specimen ==='Blocks and slides')">
+                            <label class="w3-text-blue" for="quantity3"><i class="fa fa-newspaper-o" ></i><b> No. of Blocks<span style="color:red;">*</span></b></label>
+                            <input type="number" 
+                            [(ngModel)]="quantity3" name="quantity3" [ngModelOptions]="{standalone: true}"
+                            placeholder="Enter Quantity" 
+                            class="w3-input w3-border"> 
+                          </td>
+
+                          <td  width="10%" width="10%" [hidden]="!(newSample.specimen ==='Blocks and slides')">
+                            <label class="w3-text-blue" for="quantity4"><i class="fa fa-newspaper-o" ></i><b> No. of Slides<span style="color:red;">*</span></b></label>
+                            <input type="number" 
+                            [(ngModel)]="quantity4" name="quantity4" [ngModelOptions]="{standalone: true}"
+                            placeholder="Enter Quantity" 
+                            class="w3-input w3-border"> 
+                          </td>
+                        
+                          <td  width="5%" style="text-align:center;">
+                                  <button class="w3-button w3-green custom-button" title="Click to add this sample row" type="button" (click)="addNewSample()" style="border-radius: 50%;margin-top:20px;"><i class="w3-medium  fa fa-check"></i>
+                                      
+
+                                  </button>
+                              </td>
+                      </tr>
+                  </tbody>
+              </table>
+
+            </div>
+            </div>
+         
+            <!-- end new code with specimen,sample_type,fixative,sample_quantity -->
+
+
+              <div class="clear"></div>
+
+              <div class="col-md-12" style="margin-top:10px;">
+
+              <div class="col-md-12">
+
+              <label class="w3-text-blue" for="amount"><i class="fa fa-money" aria-hidden="true"></i><b>Total Amount</b></label>
+                   
+              <input 
+               type="text"
+              formControlName="amount" [(ngModel)]="total_amount"
+              placeholder="Rs." 
+              class="w3-input w3-border" disabled=true>
+            </div>
+            
+            </div>
+
+            <div class="clear"></div>
+
+            
+            <div class="col-md-12" style="margin-top:10px;">
+
+              <div class="col-md-12">
+
+              <label class="w3-text-blue" for="clinic_history"><i class="fa fa-history" aria-hidden="true"></i><b> Clinical History<span style="color:red;">*</span></b></label>
+                   
+              <input 
+               type="text"
+              formControlName="clinic_history"
+              placeholder="Enter Clinical History" title="Clinical history of patient"
+              class="w3-input w3-border">
+
+              <div *ngIf=" form.get('clinic_history').touched && form.get('clinic_history').invalid" class="w3-panel w3-red w3-round-xlarge">
+                <div *ngIf=" form.get('clinic_history').hasError('required')">
+                   Clinical history is required
+                </div>
+                </div>
+
+              
+            </div>
+            
+          </div>
+
+         
+
+          <div class="clear"></div>
+                            
+          <div class="col-md-12" style="margin-top:10px;">
+
+                  <div class="col-md-12">
+                  <label class="w3-text-blue" for="examination"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i><b> Examination<span style="color:red;">*</span></b></label>
+                  
+                  <input  
+                  type="text" 
+                  formControlName="examination" 
+                  placeholder="Enter Examination" title="Clinical examination"
+                  class="w3-input w3-border">
+                  <div *ngIf=" form.get('examination').touched && form.get('examination').invalid" class="w3-panel w3-red w3-round-xlarge">
+                    <div *ngIf=" form.get('examination').hasError('required')">
+                      Examination is required
+                    </div>
+                    </div>
+                </div>
+                            
+          </div>
+
+          
+          <div class="clear"></div>
+                            
+              <div class="col-md-12" style="margin-top:10px;">
+                          <div class="col-md-12">
+                          <label class="w3-text-blue" for="investigation"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i><b> Investigation<span style="color:red;">*</span></b></label>
+                          
+                          <input 
+                          type="text" 
+                          formControlName="investigation" 
+                          placeholder="Enter Investigation" title="Investigation"
+                          class="w3-input w3-border">
+                          <div *ngIf=" form.get('investigation').touched && form.get('investigation').invalid" class="w3-panel w3-red w3-round-xlarge">
+                            <div *ngIf=" form.get('investigation').hasError('required')">
+                              investigation is required
+                            </div>
+                            </div>
+                        </div>
+                            
+              </div>
+              <div class="clear"></div>
+                      
+              
+              <div class="col-md-12" style="margin-top:10px;">
+                
+              <div class="col-md-12">
+                <label class="w3-text-blue" for="previous_biopsy_number"><i class="fa fa-thermometer-quarter" aria-hidden="true"></i><b> Previous Biopsy Number</b></label>
+                
+                <input
+                type="text" 
+                formControlName="previous_biopsy_number" 
+                placeholder="Enter Previous Biopsy Number if any " title="Previous Biopsy Number"
+                class="w3-input w3-border">
+              </div>
+                  
+              </div>
+
+             
+
+
+<div class="clear"></div>
+
+                <div class="col-md-12" style="margin-top:10px;">
+                  
+                  <div class="col-md-12">
+                      <div class="w3-text-blue">
+                        <label for="file"><i class="fa fa-file-image-o" aria-hidden="true"></i><b>  File Upload</b></label>
+                        <input type="file" id="file"  multiple (change)="onFileSelected($event)" class="w3-input w3-border" accept="image/*" style="height: 100%">
+                        
+                      </div>
+                    </div>
+
+                </div>
+
+
+                  
+
+                    <div class="col-md-12" style="margin-top:10px;">
+                      <div class="col-md-12">
+
+                        <label class="w3-text-blue" for="diagnosis"><i class="fa fa-history" aria-hidden="true"></i><b> Clinical Diagnosis</b><span style="color:red;">*</span></label>
+                             
+                        <input 
+                         type="text"
+                        formControlName="diagnosis"
+                        placeholder="Enter Diagnosis" title="Diagnosis"
+                        class="w3-input w3-border">
+                        <div *ngIf=" form.get('diagnosis').touched && form.get('diagnosis').invalid" class="w3-panel w3-red w3-round-xlarge">
+                          <div *ngIf=" form.get('diagnosis').hasError('required')">
+                            Clinical diagnosis is required
+                          </div>
+                          </div>
+                      </div>
+                   </div>
+              <div class="clear"></div>
+                   
+                        
+                  
+                   <div class="col-md-12" style="margin-top:10px;">
+                    <div class="col-md-12">
+
+                      <label class="w3-text-blue" for="opetative_notes"><i class="fa fa-history" aria-hidden="true"></i><b>Operative Notes(For Neuro Surgery)</b></label>
+                            
+                      <input 
+                       type="text"
+                      formControlName="opetative_notes"
+                      placeholder="Enter Operative Notes" title="Operative Notes"
+                      class="w3-input w3-border">
+                    </div>
+                      </div>
+
+
+                     
+
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <div class="col-md-12">
+                        <label class="w3-text-blue"><i class="fa fa-money" aria-hidden="true"></i><b> Payment Mode and Details<span style="color:red;">*</span></b></label>
+                        
+                      </div>
+                          
+            </div>
+
+      <div class="col-md-12" >
+              <div class="col-md-4">
+            
+              
+              <div class="panel-body panel panel-default fixed-bottom" style="text-align:left;margin-top:20px;padding:10px; ">
+              <label class="radio-inline">
+                <input type="radio" name="optradio"  (click)="toggle1()"> DD
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="optradio" (click)="toggle2()">Online Transaction
+              </label>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+
+            <label class="w3-text-blue" for="dd_no"><i class="fa fa-history" aria-hidden="true"></i><b>DD No.</b></label>
+    
+          <input 
+            type="text" required
+            formControlName="dd_no" 
+            
+            placeholder="Enter DD Number" title="DD Number"
+            class="w3-input w3-border"  [(ngModel)]="dd_obj.dd_no" (keypress)="keyPress1($event)">
+           
+            
+          </div>
+
+          <div class="col-md-4" >
+
+            <label class="w3-text-blue" for="trans_no"><i class="fa fa-history" aria-hidden="true"></i><b>Online Transaction No.</b></label>
+              
+          <input required
+            type="text" 
+            formControlName="trans_no"
+          
+            placeholder="Enter Online Transaction Number" title="Transaction Number"
+            class="w3-input w3-border"  [(ngModel)]="dd_obj.trans_no" (keypress)="keyPress2($event)"> 
+          </div>             
+                                    
+    </div>
+
+    <div class="col-md-12" style="margin-top:10px;">
+        <div class="col-md-4" > 
+          <label class="w3-text-blue" for="bank_name"><i class="fa fa-history" aria-hidden="true"></i><b>Bank Name</b></label>
+                
+                    <input required
+                      type="text" 
+                      formControlName="bank_name"
+                      
+                      placeholder="Enter Bank Name" title="Bank Name"
+                      class="w3-input w3-border" [(ngModel)]="dd_obj.bank_name">
+        </div>
+        <div class="col-md-4">
+          <label class="w3-text-blue" for="date_of_dd"><i class="fa fa-history" aria-hidden="true"></i><b>Date Of DD/Online Transaction</b></label>
+                
+          <!-- <input required
+
+            type="text" 
+            
+            formControlName="date_of_dd" 
+            placeholder="Enter Date "
+            class="w3-input w3-border" [(ngModel)]="dd_obj.date_of_dd"> -->
+            <my-date-picker name="mydate" formControlName="date_of_dd" [options]="myDatePickerOptions" [(ngModel)]="dd_obj.date_of_dd" required></my-date-picker>
+            <!-- <div *ngIf=" form.get('date_of_dd').touched && form.get('date_of_dd').invalid" class="w3-panel w3-red w3-round-xlarge">
+              <div *ngIf=" form.get('date_of_dd').hasError('required')">
+               Date is required
+              </div>
+              </div> -->
+       
+          </div>
+        <div class="col-md-4">
+          <label class="w3-text-blue" for="amount"><i class="fa fa-money" aria-hidden="true"></i><b> Amount</b></label>
+          
+          <input 
+          type="text" formControlName="amount" [(ngModel)]="total_amount"
+          placeholder="Rs." 
+          class="w3-input w3-border" disabled=true>
+            
+        </div>
+                       
+                      
+ </div>
+
+                      
+
+                <div class="container" style="text-align:center;">
+                <button type="submit" style="margin-top:30px;margin-bottom:20px;" name="button"   class="w3-btn w3-blue"><span *ngIf="index == undefined">Add Sample  </span><span *ngIf="index != undefined">Update Sample  </span><i class="w3-medium fa fa-check"></i></button>
+              </div>
+    
+
+              
+              </form>
+
+            </div>
+    </div>

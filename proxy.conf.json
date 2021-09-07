@@ -1,0 +1,6 @@
+{
+    "/": {
+      "target": "http://ehrcapps.iiitb.ac.in:8080/ExternalHospital",
+      "secure": false
+    }
+  }

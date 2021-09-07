@@ -1,0 +1,22 @@
+<app-header7></app-header7>
+<div style="text-align:center;margin-top:50px;">
+
+
+  <div class="col-md-12">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+  <form novalidate [formGroup]="form" (ngSubmit)="toggleButton()">
+    <label class="w3-text-blue" for="email"><i class="fa fa-user-circle" aria-hidden="true"></i>
+      <b>Please enter the Email Id</b>  
+      </label>
+      <input type="email"   formControlName="email" class="w3-input w3-border">
+      <button type="submit" name="button" [disabled]="form.invalid || submitted_data_pass" class="w3-btn w3-blue">Submit</button>
+          
+          
+  </form>
+</div>
+<div class="col-md-3"></div>
+  </div>
+
+</div>
+

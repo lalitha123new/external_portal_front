@@ -1,0 +1,164 @@
+
+<div class="row">
+ <div class="col-md-1">
+  <img src="assets/img/NIMHANS-logo.jpg" class="logo w3-image" style="margin-top:10px;">
+
+ </div>
+ <div class="col-md-11">
+  <app-header5></app-header5>
+  <hr class="line_gradient">
+  <div class="col-md-5" style="padding-top:20px;text-align: center;">
+    <h5 class="text1">Welcome to NIMHANS Lab services portal</h5>
+   
+    <p class="text2">This portal enables you to raise requests for tests online and tracks the status of your samples. This service is currently available for two laboratories - Neuropathology Lab and Autoimmune Lab.</p>
+    <div style="border:1px solid #E6E6E6;">
+      <h6 style="text-align: center;" class="text3">Neuropathology Lab</h6>
+      <p class="text4">The Neuropathology Lab offers comprehensive diagnosis for brain tumors, epilepsy, neuromuscular disorders, neuroinfections, neurometabolic & neurodegenerative disorders including advanced molecular diagnosis, genetic tests & electron microscopy.</p>
+      <h6 style="text-align: center;" class="text5"><a href="http://www.nimhans.ac.in/neuropathology">More Info</a></h6>
+    </div>
+<br>
+        <div style="border:1px solid #E6E6E6;">
+      <h6 style="text-align: center;" class="text3">Autoimmune Lab</h6>
+      <p class="text4">The Autoimmune Laboratory is geared to provide wide panel of diagnostic tests for autoimmune neurological disorders of central and peripheral nervous system.</p>
+      <h6 style="text-align: center;" class='text5'><a href="http://www.nimhans.ac.in/neuropathology">More Info</a></h6>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-5 text6" style="margin-top:30px;border:1px solid orange;">
+    
+  
+      <form novalidate [formGroup]="form" (ngSubmit)="toggleButton()" >
+         
+              <!-- <label
+              class="w3-text-blue"
+               for="name"><i class="fa fa-user-circle" aria-hidden="true"></i>
+            
+              <b>User ID Or The Registered Email Address</b>
+             </label> -->
+              <h3 style="padding-top:70px;" class="text7">Log In</h3>
+             
+              <input type="text" 
+              formControlName="name" 
+              placeholder="Username"
+              class="w3-input  w3-border text8" style="background-color: white;">
+           
+              <div *ngIf=" form.get('name').touched && form.get('name').invalid" class="w3-panel w3-blue w3-round-xlarge">
+                <div *ngIf=" form.get('name').hasError('required')">
+                    Name is required!!
+                  </div>  
+                  <div *ngIf=" form.get('name').hasError('pattern')">
+                      Invalid Name!!
+                    </div>
+                  </div>
+              
+                  <!-- <label 
+                  class="w3-text-blue"
+                  for="password"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                  <b>Password</b>  
+                  </label> -->
+                  <br>
+                  <input type="password" 
+                  formControlName="pass" 
+                  placeholder="Password"
+                  class="w3-input w3-border text8" style="background-color: white;">
+                 
+                  <div *ngIf=" form.get('pass').touched && form.get('pass').hasError('required')" class="w3-panel w3-blue w3-round-xlarge">
+                         Password is required!!
+                   </div>
+                   <br>
+                  <!-- <button type="submit" name="button" [disabled]="form.invalid" class="w3-btn w3-blue">Login</button> -->
+                  <button  type="submit" mat-flat-button color="warn" class="my-class text9" [disabled]="form.invalid">Login</button>
+                  <!-- <button type="button" name="button"  class="w3-btn w3-blue" (click)="forgotPassword()">Forgot Password?</button> -->
+                   <h5 style="text-align: center;" class="text10">OR</h5>
+                   <h5 style="text-align: center;" class="text11"><a routerLink="register"><span>Register Hospital</span></a></h5>
+                   <h5 style="text-align: right;" class="text12"><p (click)="forgotPassword()" style="cursor: pointer;">Forgot Password?</p></h5>
+       
+                </form> 
+       <div *ngIf="toggleform" class="alert alert-danger">
+          username or password incorrect or registration is not yet approved!
+        </div>
+     
+    </div>
+ </div>
+ <footer style="text-align: center;">
+ 
+  <p class="text13">For other information or help, contact <a href="labservices.nimhans@gmail.com">labservices.nimhans@gmail.com</a></p>
+</footer>
+ <!-- <div class="col-md-1"></div> -->
+</div>
+
+
+<!-- <app-header5></app-header5> -->
+
+<!-- <div class="col-md-12" style="text-align:justify;padding-right:0px;padding-left: 0px;">
+  <div class="col-md-3">
+    <div class="text-center">
+      <img src="assets/img/NIMHANS-logo.jpg" class="logo w3-image">
+    </div>
+  </div>
+  <div class="col-md-6">
+  <p><b>Welcome to the NIMHANS Laboratory Services Portal.</b></p>
+  <p><b>This Portal enables you to raise requests for tests online and tracks the status of your samples. This service is currently available for two laboratories – Neuropathology Lab and Autoimmune Laboratory.</b></p>
+  <p><b>The Neuropathology Lab offers comprehensive diagnosis for brain tumors, epilepsy, neuromuscular disorders, neuroinfections, neurometabolic and neurodegenerative disorders including advanced molecular diagnosis, genetic tests and electron microscopy.  For more information about the Neuropathology Lab,
+     <a href="http://www.nimhans.ac.in/neuropathology">click here</a></b></p>
+  <p><b>The Autoimmune Laboratory is geared to provide wide panel of diagnostic tests for autoimmune neurological disorders of central and peripheral nervous system. For more information  about the Autoimmune Lab,<a href="http://www.nimhans.ac.in/neuropathology">click here</a></b></p>
+  <p><b>If you are a registered user, log in with your user id and password</b></p>
+  <p><b>If you would like to register your hospital,please<a routerLink="register"><span> click here</span></a> </b></p>
+  <p><b>For other information or help, contact <span style="color:blue;">labservices.nimhans@gmail.com</span></b></p>
+  
+</div>
+  <div class="col-md-3"></div>
+  </div>
+<br>
+<div class="col-md-12">
+<div class="w3-container align-center w3-animate-left w3-card login-card">
+  
+<form novalidate [formGroup]="form" (ngSubmit)="toggleButton()">
+   
+        <label
+        class="w3-text-blue"
+         for="name"><i class="fa fa-user-circle" aria-hidden="true"></i>
+      
+        <b>User ID Or The Registered Email Address</b>
+        </label>
+        <input type="text" 
+        formControlName="name" 
+        placeholder="Name"
+        class="w3-input w3-border">
+     
+        <div *ngIf=" form.get('name').touched && form.get('name').invalid" class="w3-panel w3-blue w3-round-xlarge">
+          <div *ngIf=" form.get('name').hasError('required')">
+              Name is required!!
+            </div>  
+            <div *ngIf=" form.get('name').hasError('pattern')">
+                Invalid Name!!
+              </div>
+            </div>
+        
+            <label 
+            class="w3-text-blue"
+            for="password"><i class="fa fa-user-circle" aria-hidden="true"></i>
+            <b>Password</b>  
+            </label>
+            <input type="password" 
+            formControlName="pass" 
+            placeholder="Password"
+            class="w3-input w3-border">
+           
+            <div *ngIf=" form.get('pass').touched && form.get('pass').hasError('required')" class="w3-panel w3-blue w3-round-xlarge">
+                   Password is required!!
+             </div>
+            <button type="submit" name="button" [disabled]="form.invalid" class="w3-btn w3-blue">Login</button>
+            <button type="button" name="button"  class="w3-btn w3-blue" (click)="forgotPassword()">Forgot Password?</button>
+             
+ 
+          </form> 
+ <div *ngIf="toggleform" class="alert alert-danger">
+    username or password incorrect or registration is not yet approved!
+  </div>
+</div>
+</div>
+<div class="col-md-12" style="text-align:center;margin-top:20px;">
+<footer style="text-align:center;"><p><i class="glyphicon glyphicon-copyright-mark"></i> NIMHANS 2020. Developed by E Health Research Center, IIIT-Bangalore</p></footer>
+</div> -->
+ 

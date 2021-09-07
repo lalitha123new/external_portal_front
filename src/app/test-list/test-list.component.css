@@ -1,0 +1,21 @@
+td{
+    vertical-align: middle;
+}
+
+div{
+    
+    margin-left: 0%;
+    /* width:100%; */
+
+}
+#container1{
+    
+}
+.border_class{
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+}
+.header_class{
+    text-align:center;
+}
+
